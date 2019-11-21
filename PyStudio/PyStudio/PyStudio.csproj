@@ -101,7 +101,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Core\Data.xaml">
+    <Page Include="Pages\Data\Data.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Core\Model.xaml">
+    <Page Include="Pages\Model\Model.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,21 +141,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Core\Stat.xaml">
+    <Page Include="Pages\Stat\Stat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Core\Var.xaml">
+    <Page Include="Pages\Var.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Core\Visualize.xaml">
+    <Page Include="Pages\Plot\Visualize.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Core\Data.xaml.cs">
+    <Compile Include="Pages\Data\Data.xaml.cs">
       <DependentUpon>Data.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Env.xaml.cs">
@@ -167,7 +167,7 @@
     <Compile Include="Pages\Import.xaml.cs">
       <DependentUpon>Import.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Core\Model.xaml.cs">
+    <Compile Include="Pages\Model\Model.xaml.cs">
       <DependentUpon>Model.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NewItem.xaml.cs">
@@ -185,13 +185,13 @@
     <Compile Include="Pages\Settings\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Core\Stat.xaml.cs">
+    <Compile Include="Pages\Stat\Stat.xaml.cs">
       <DependentUpon>Stat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Core\Var.xaml.cs">
+    <Compile Include="Pages\Var.xaml.cs">
       <DependentUpon>Var.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Core\Visualize.xaml.cs">
+    <Compile Include="Pages\Plot\Visualize.xaml.cs">
       <DependentUpon>Visualize.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

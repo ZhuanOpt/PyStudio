@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\gitee\PyStudio\PythonEnv\PyStudio\obj\Debug\
+D:\gitee\PyStudio\PyStudio\PyStudio\obj\Debug\
 PythonEnv
 none
 false
 DEBUG;TRACE
-D:\gitee\PyStudio\PythonEnv\PyStudio\App.xaml
-16-963403678
-2-2015999542
-21-1732852866
-21-1291591776
-Pages\Help.xaml;Pages\Opinion.xaml;MainWindow.xaml;Pages\Core\Data.xaml;Pages\Env.xaml;Pages\Explorer.xaml;Pages\Import.xaml;Pages\Core\Model.xaml;Pages\NewItem.xaml;Pages\Plot.xaml;Pages\prop.xaml;Pages\Readme.xaml;Pages\Settings\Settings.xaml;Pages\Core\Stat.xaml;Pages\Core\Var.xaml;Pages\Core\Visualize.xaml;
+D:\gitee\PyStudio\PyStudio\PyStudio\App.xaml
+161880835543
+2-205903727
+21927010199
+21-1174793490
+Pages\Help.xaml;Pages\Opinion.xaml;MainWindow.xaml;Pages\Data\Data.xaml;Pages\Env.xaml;Pages\Explorer.xaml;Pages\Import.xaml;Pages\Model\Model.xaml;Pages\NewItem.xaml;Pages\Plot.xaml;Pages\prop.xaml;Pages\Readme.xaml;Pages\Settings\Settings.xaml;Pages\Stat\Stat.xaml;Pages\Var.xaml;Pages\Plot\Visualize.xaml;
 
-False
+True
 

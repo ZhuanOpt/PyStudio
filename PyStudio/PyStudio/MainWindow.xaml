@@ -277,7 +277,7 @@
                 </StatusBarItem>
                 <Separator Grid.Column="3"></Separator>
                 <StatusBarItem Grid.Column="4" HorizontalAlignment="Center">
-                    <TextBlock Name="current_fiel_path" Text="C:/Python/demo.py" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Name="current_fiel_path" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StatusBarItem>
                 <Separator Grid.Column="5"></Separator>
                 <StatusBarItem Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -415,7 +415,7 @@
 
                             <Grid Grid.Row="0">
                                 <Grid Background="White" >
-                                    <Frame x:Name="right_frame" Source="Pages/Core/Data.xaml"  NavigationUIVisibility="Hidden"/>
+                                    <Frame x:Name="right_frame" Source="Pages/Data/Data.xaml"  NavigationUIVisibility="Hidden"/>
                                 </Grid>
                             </Grid>
                             <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch"></GridSplitter>

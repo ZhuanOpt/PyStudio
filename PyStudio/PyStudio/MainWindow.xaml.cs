@@ -313,22 +313,22 @@ namespace PythonEnv
 
         private void btn_view_data_Click(object sender, RoutedEventArgs e)
         {
-            right_frame.Navigate(new Uri("Pages/Core/Data.xaml", UriKind.Relative));
+            right_frame.Navigate(new Uri("Pages/Data/Data.xaml", UriKind.Relative));
         }
 
         private void btn_stat_Click(object sender, RoutedEventArgs e)
         {
-            right_frame.Navigate(new Uri("Pages/Core/Stat.xaml", UriKind.Relative));
+            right_frame.Navigate(new Uri("Pages/Stat/Stat.xaml", UriKind.Relative));
         }
 
         private void btn_Visualize_Click(object sender, RoutedEventArgs e)
         {
-            right_frame.Navigate(new Uri("Pages/Core/Visualize.xaml", UriKind.Relative));
+            right_frame.Navigate(new Uri("Pages/Plot/Visualize.xaml", UriKind.Relative));
         }
 
         private void btn_model_Click(object sender, RoutedEventArgs e)
         {
-            right_frame.Navigate(new Uri("Pages/Core/Model.xaml", UriKind.Relative));
+            right_frame.Navigate(new Uri("Pages/Model/Model.xaml", UriKind.Relative));
         }
 
         private void test_run_Click(object sender, RoutedEventArgs e)
@@ -338,7 +338,7 @@ namespace PythonEnv
 
         private void btn_view_var_Click(object sender, RoutedEventArgs e)
         {
-            right_frame.Navigate(new Uri("Pages/Core/Var.xaml", UriKind.Relative));
+            right_frame.Navigate(new Uri("Pages/Var.xaml", UriKind.Relative));
         }
 
 
