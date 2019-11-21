@@ -1,0 +1,81 @@
+﻿<Page x:Class="PythonEnv.pages.model"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PythonEnv.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="500" UseLayoutRounding="True"
+      Title="model">
+
+    <Grid Background="#FFF9F9F9">
+        <ScrollViewer x:Name="sv_home" Margin="0" VerticalScrollBarVisibility="Auto" FontFamily="Segoe UI">
+            <WrapPanel  x:Name="wrap_1" HorizontalAlignment="Left"  Margin="5" VerticalAlignment="Top"  Background="#FFF9F9F9" Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+                <Grid x:Name="grid_1" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_1"  Text="线性回归"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="grid_2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_2"  Text="逻辑回归"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="grid_3" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_3"  Text="决策树"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="grid_4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_4"  Text="WOE"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="grid_5" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_5"  Text="IV"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="grid_6" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_6"  Text="评分卡"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="grid_7" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_7"  Text="特征选择"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="grid_8" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image x:Name="logo_8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"   Width="100" Source="/PythonEnv;component/source/image/nostackdirectboth_52x60.png" RenderTransformOrigin="0.528,0.348" />
+                        <TextBlock x:Name="label_8"  Text="时间序列"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="grid_9" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="80"  Width="100"  Margin="2" MouseLeave="Grid_Effect_MouseLeave" MouseEnter="Grid_Effect_MouseEnter">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock x:Name="label9"  Text="+"   HorizontalAlignment="Center" FontFamily="Microsoft YaHei Light" FontSize="48" VerticalAlignment="Center"  />
+                    </StackPanel>
+                </Grid>
+
+
+
+
+
+
+            </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

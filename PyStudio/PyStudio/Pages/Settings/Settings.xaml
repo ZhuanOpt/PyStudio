@@ -1,0 +1,147 @@
+﻿<Window x:Class="PythonEnv.pages.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PythonEnv.pages"
+        mc:Ignorable="d"
+          Title="设置" Height="450" Width="800" ResizeMode="NoResize"  ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl x:Name="set_tabctrl" x:FieldModifier="public"  HorizontalAlignment="Left" Height="410" VerticalAlignment="Top" Width="794" Margin="0,5,0,0">
+            <TabItem x:Name="set_tab_general" Header="通用设置" FontFamily="Microsoft YaHei UI">
+                <Grid Background="#FFF8F9F9">
+                    <TextBox x:Name="set_box_browser_path" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="251,65,0,0" TextWrapping="Wrap" Text="当前系统默认浏览器" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="默认浏览器" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="170,64,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="set_box_edit_path" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="251,99,0,0" TextWrapping="Wrap" Text="C:/WINDOWS/system32/notepad.exe" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="默认编辑器" HorizontalAlignment="Left" Margin="170,98,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="set_box_download_path" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="251,130,0,0" TextWrapping="Wrap" Text="C:/pandax/downloads" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="下载地址"  HorizontalAlignment="Left" Margin="170,129,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="general_submit"  Content="确定" HorizontalAlignment="Left" Margin="573,300,0,0" VerticalAlignment="Top" Width="75" Click="General_submit_Click"/>
+                    <Button x:Name="general_cancel"  Content="取消" HorizontalAlignment="Left" Margin="663,300,0,0" VerticalAlignment="Top" Width="75" Click="General_cancel_Click"/>
+                    <Button x:Name="set_btn_download_path"  Content="修改" HorizontalAlignment="Left" Margin="535,132,0,0" VerticalAlignment="Top" Width="50" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Set_btn_download_path_Click"/>
+                    <TextBox x:Name="set_box_log_path" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="250,159,0,0" TextWrapping="Wrap" Text="C:/pandax/logs/app.log" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="执行日志" HorizontalAlignment="Left" Margin="169,158,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="set_btn_log_path" Content="打开" HorizontalAlignment="Left" Margin="534,161,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Set_btn_log_path_Click"/>
+                    <Button x:Name="set_btn_edit_path" Content="修改" HorizontalAlignment="Left" Margin="535,101,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Set_btn_edit_path_Click"/>
+                    <Button x:Name="set_btn_browser_path" Content="修改" HorizontalAlignment="Left" Margin="535,67,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Set_btn_browser_path_Click"/>
+                    <TextBox x:Name="set_box_errlog_path" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="251,192,0,0" TextWrapping="Wrap" Text="C:/pandax/logs/app_err.log" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="错误日志" HorizontalAlignment="Left" Margin="170,191,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="set_btn_errlog_path" Content="打开" HorizontalAlignment="Left" Margin="535,194,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Set_btn_errlog_path_Click"/>
+                    <TextBox x:Name="set_box_pandax_path" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="251,33,0,0" TextWrapping="Wrap" Text="C:/pandax" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="程序目录" HorizontalAlignment="Left" Margin="170,29,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="set_btn_pandax_open" Content="打开" HorizontalAlignment="Left" Margin="535,35,0,0" VerticalAlignment="Top" Width="101" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" RenderTransformOrigin="0.153,0.68" Click="Set_btn_pandax_open_Click"/>
+                    <Button x:Name="set_btn_download_path_open" Content="打开" HorizontalAlignment="Left" Margin="586,132,0,0" VerticalAlignment="Top" Width="50" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" RenderTransformOrigin="0.153,0.68" Click="Set_box_download_path_open_Click"/>
+                    <CheckBox Content="开机启动" HorizontalAlignment="Left" Margin="251,231.775,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <CheckBox Content="图标通知" HorizontalAlignment="Left" Margin="345.933,231.775,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="set_tab_server" Header="服务器" FontFamily="Microsoft YaHei UI" >
+                <Grid Background="#FFF8F9F9">
+                    <TextBox x:Name="box_server_name" HorizontalAlignment="Left" Height="28" Margin="244,36,0,0" TextWrapping="Wrap" Text="apache2.4" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="服务器" HorizontalAlignment="Left" Margin="170,35,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_server_www" HorizontalAlignment="Left" Height="28" Margin="244,101,0,0" TextWrapping="Wrap" Text="C:\pandax\www" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="网站目录" HorizontalAlignment="Left" Margin="170,100,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_server_port" HorizontalAlignment="Left" Height="28" Margin="244,132,0,0" TextWrapping="Wrap" Text="80" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="端口" HorizontalAlignment="Left" Margin="170,130,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_server_domin" HorizontalAlignment="Left" Height="28" Margin="244,195,0,0" TextWrapping="Wrap" Text="pandax.com" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="域名" HorizontalAlignment="Left" Margin="170,194,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_server_log" HorizontalAlignment="Left" Height="28" Margin="244,227,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\apache\logs\access.log" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="执行日志" HorizontalAlignment="Left" Margin="170,225,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="server_submit" Content="确定" HorizontalAlignment="Left" Margin="586,327,0,0" VerticalAlignment="Top" Width="75" Click="Server_submit_Click"/>
+                    <Button x:Name="server_cancel" Content="取消" HorizontalAlignment="Left" Margin="676,327,0,0" VerticalAlignment="Top" Width="75" Click="Server_cancel_Click"/>
+                    <CheckBox x:Name="server_install_service" Content="安装服务" HorizontalAlignment="Left" Margin="528,41,0,0" VerticalAlignment="Top" Width="100" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_server_err_log" HorizontalAlignment="Left" Height="28" Margin="244,254,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\apache\logs\error.log" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="错误日志" HorizontalAlignment="Left" Margin="170,252,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="server_domain_btn" Content="修改" HorizontalAlignment="Left" Margin="528,197,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button x:Name="server_www_btn" Content="修改" HorizontalAlignment="Left" Margin="528,103,0,0" VerticalAlignment="Top" Width="50" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Server_www_btn_Click"/>
+                    <Button x:Name="server_www_open" Content="打开" HorizontalAlignment="Left" Margin="579,103,0,0" VerticalAlignment="Top" Width="50" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Server_www_open_Click"/>
+                    <TextBox x:Name="box_server_config" HorizontalAlignment="Left" Height="28" Margin="244,284,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\apache\conf\httpd.conf" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="配置文件" HorizontalAlignment="Left" Margin="170,282,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="server_log_btn" Content="打开" HorizontalAlignment="Left" Margin="528,228,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Server_log_btn_Click"/>
+                    <Button x:Name="server_err_log_btn" Content="打开" HorizontalAlignment="Left" Margin="528,255,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Server_err_log_btn_Click"/>
+                    <Button x:Name="server_config_btn" Content="打开" HorizontalAlignment="Left" Margin="528,285,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Server_config_btn_Click"/>
+                    <Button x:Name="server_port_check" Content="检查" HorizontalAlignment="Left" Margin="528,133,0,0" VerticalAlignment="Top" Width="101" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Server_port_check_Click"/>
+                    <TextBox x:Name="box_server_index" HorizontalAlignment="Left" Height="28" Margin="244,162,0,0" TextWrapping="Wrap" Text="index.php index.html index.htm" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="默认首页" HorizontalAlignment="Left" Margin="170,160,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="server_index_btn" Content="修改" HorizontalAlignment="Left" Margin="528,163,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_server_install_dir" HorizontalAlignment="Left" Height="28" Margin="243,71,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\apache" VerticalAlignment="Top" Width="278" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="安装目录" HorizontalAlignment="Left" Margin="169,70,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="server_install_dir_btn" Content="修改" HorizontalAlignment="Left" Margin="527,73,0,0" VerticalAlignment="Top" Width="50" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Server_install_dir_btn_Click"/>
+                    <Button x:Name="server_install_dir_open" Content="打开" HorizontalAlignment="Left" Margin="578,73,0,0" VerticalAlignment="Top" Width="50" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Server_install_dir_open_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="set_tab_database" Header="数据库" FontFamily="Microsoft YaHei UI">
+                <Grid Background="#FFF8F9F9">
+                    <TextBox x:Name="box_database_name" HorizontalAlignment="Left" Height="28" Margin="244,36,0,0" TextWrapping="Wrap" Text="mysql5.5" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="数据库" HorizontalAlignment="Left" Margin="176,35,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_database_path" HorizontalAlignment="Left" Height="28" Margin="244,68,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\mysql" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="目录" HorizontalAlignment="Left" Margin="176,66,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_db_old_password" HorizontalAlignment="Left" Height="28" Margin="244,128,0,0" TextWrapping="Wrap" Text="旧密码" VerticalAlignment="Top" Width="130" Foreground="#FFA3A3A3" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="修改密码" HorizontalAlignment="Left" Margin="176,127,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_db_password" HorizontalAlignment="Left" Height="28" Margin="244,160,0,0" TextWrapping="Wrap" Text="请输入密码" VerticalAlignment="Top" Width="130" Foreground="#FFA3A3A3" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="备份" HorizontalAlignment="Left" Margin="176,159,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Label Content="还原" HorizontalAlignment="Left" Margin="176,187,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="database_submit" Content="确定" HorizontalAlignment="Left" Margin="607,342,0,0" VerticalAlignment="Top" Width="75" Click="Database_submit_Click"/>
+                    <Button x:Name="database_cancel" Content="取消" HorizontalAlignment="Left" Margin="697,342,0,0" VerticalAlignment="Top" Width="75" Click="Database_cancel_Click"/>
+                    <CheckBox x:Name="database_service_install" Content="安装服务" HorizontalAlignment="Left" Margin="528,41,0,0" VerticalAlignment="Top" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <TextBox x:Name="box_database_log" HorizontalAlignment="Left" Height="28" Margin="244,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="执行日志" HorizontalAlignment="Left" Margin="176,216,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button Content="导出" HorizontalAlignment="Left" Margin="528,162,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button x:Name="database_path_btn" Content="修改" HorizontalAlignment="Left" Margin="528,69,0,0" VerticalAlignment="Top" Width="50" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_database_err_log" HorizontalAlignment="Left" Height="28" Margin="244,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="错误日志" HorizontalAlignment="Left" Margin="176,251,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_db_new_password" HorizontalAlignment="Left" Height="28" Margin="379,128,0,0" TextWrapping="Wrap" Text="新密码" VerticalAlignment="Top" Width="142" Foreground="#FFA3A3A3" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button Content="修改" HorizontalAlignment="Left" Margin="528,130,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_db_bak_name" HorizontalAlignment="Left" Height="28" Margin="379,160,0,0" TextWrapping="Wrap" Text="需要备份的数据库名" VerticalAlignment="Top" Width="142" Foreground="#FFA3A3A3" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_db_bak_file_path" HorizontalAlignment="Left" Height="28" Margin="244,188,0,0" TextWrapping="Wrap" Text="选择备份文件路径" VerticalAlignment="Top" Width="130" Foreground="#FFA3A3A3" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_db_target_name" HorizontalAlignment="Left" Height="28" Margin="379,188,0,0" TextWrapping="Wrap" Text="目标数据库名" VerticalAlignment="Top" Width="142" Foreground="#FFA3A3A3" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button Content="导入" HorizontalAlignment="Left" Margin="528,190,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_database_config_path" HorizontalAlignment="Left" Height="28" Margin="244,278,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\mysql\my.ini" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="配置文件" HorizontalAlignment="Left" Margin="176,277,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="database_log_btn" Content="打开" HorizontalAlignment="Left" Margin="528,219,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button x:Name="database_err_log_btn" Content="打开" HorizontalAlignment="Left" Margin="528,254,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button x:Name="database_config_path_btn" Content="打开" HorizontalAlignment="Left" Margin="528,280,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <TextBox x:Name="box_database_tool" HorizontalAlignment="Left" Height="28" Margin="244,312,0,0" TextWrapping="Wrap" Text="http://127.0.0.1/phpmyadmin" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="管理工具" HorizontalAlignment="Left" Margin="176,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.597,0.133" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="database_tool_btn" Content="打开" HorizontalAlignment="Left" Margin="528,314,0,0" VerticalAlignment="Top" Width="100" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Button x:Name="database_path_open" Content="打开" HorizontalAlignment="Left" Margin="579,69,0,0" VerticalAlignment="Top" Width="50" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Database_path_open_Click"/>
+                    <TextBox x:Name="box_database_port" HorizontalAlignment="Left" Height="28" Margin="244,98,0,0" TextWrapping="Wrap" Text="3306" VerticalAlignment="Top" Width="277" FontFamily="Microsoft YaHei UI" FontSize="10"/>
+                    <Label Content="端口" HorizontalAlignment="Left" Margin="176,97,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="database_port_check" Content="检查" HorizontalAlignment="Left" Margin="528,100,0,0" VerticalAlignment="Top" Width="101" Height="25" FontFamily="Microsoft YaHei UI" FontSize="10" Click="Database_port_check_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="set_tab_php" Header="PHP" FontFamily="Microsoft YaHei UI">
+                <Grid Background="#FFF8F9F9">
+                    <TextBox x:Name="box_php_name" HorizontalAlignment="Left" Height="28" Margin="244,35,0,0" TextWrapping="Wrap" Text="php7.3" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="PHP版本" HorizontalAlignment="Left" Margin="175,34,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_php_path" HorizontalAlignment="Left" Height="28" Margin="244,66,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\php" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="目录" HorizontalAlignment="Left" Margin="175,65,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_php_tool" HorizontalAlignment="Left" Height="28" Margin="244,98,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\php" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="管理工具" HorizontalAlignment="Left" Margin="175,97,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_php_ext_path" HorizontalAlignment="Left" Height="28" Margin="244,130,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\php\ext" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="扩展目录" HorizontalAlignment="Left" Margin="175,128,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_php_info" HorizontalAlignment="Left" Height="28" Margin="244,161,0,0" TextWrapping="Wrap" Text="http://127.0.0.1/phpinfo" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="PHP探针" HorizontalAlignment="Left" Margin="175,160,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <TextBox x:Name="box_php_log" HorizontalAlignment="Left" Height="28" Margin="244,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="执行日志" HorizontalAlignment="Left" Margin="175,190,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="php_submit" Content="确定" HorizontalAlignment="Left" Margin="570,300,0,0" VerticalAlignment="Top" Width="75" Click="Php_submit_Click"/>
+                    <Button x:Name="php_cancel" Content="取消" HorizontalAlignment="Left" Margin="660,300,0,0" VerticalAlignment="Top" Width="75" Click="Php_cancel_Click"/>
+                    <Button x:Name="php_ext_path_btn" Content="打开" HorizontalAlignment="Left" Margin="528,131,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_ext_path_btn_Click"/>
+                    <TextBox x:Name="box_php_err_log" HorizontalAlignment="Left" Height="28" Margin="244,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="错误日志" HorizontalAlignment="Left" Margin="175,221,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="php_info_btn" Content="打开" HorizontalAlignment="Left" Margin="528,163,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_info_btn_Click"/>
+                    <Button x:Name="php_tool_btn" Content="打开" HorizontalAlignment="Left" Margin="528,100,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_tool_btn_Click"/>
+                    <TextBox x:Name="box_php_config_path" HorizontalAlignment="Left" Height="28" Margin="244,252,0,0" TextWrapping="Wrap" Text="C:\pandax\plugins\php\php.ini" VerticalAlignment="Top" Width="277" FontSize="10" FontFamily="Microsoft YaHei UI"/>
+                    <Label Content="配置文件" HorizontalAlignment="Left" Margin="175,251,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Microsoft YaHei UI" FontSize="11"/>
+                    <Button x:Name="php_log_btn" Content="打开" HorizontalAlignment="Left" Margin="528,193,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_log_btn_Click"/>
+                    <Button x:Name="php_err_log_btn" Content="打开" HorizontalAlignment="Left" Margin="528,224,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_err_log_btn_Click"/>
+                    <Button x:Name="php_config_path_btn" Content="打开" HorizontalAlignment="Left" Margin="528,254,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_config_path_btn_Click"/>
+                    <Button x:Name="php_path_btn" Content="修改" HorizontalAlignment="Left" Margin="528,68,0,0" VerticalAlignment="Top" Width="50" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_path_btn_Click"/>
+                    <Button x:Name="php_path_open" Content="打开" HorizontalAlignment="Left" Margin="579,68,0,0" VerticalAlignment="Top" Width="50" Height="25" FontSize="10" FontFamily="Microsoft YaHei UI" Click="Php_path_open_Click"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>

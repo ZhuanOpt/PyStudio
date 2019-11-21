@@ -1,0 +1,570 @@
+﻿<Window x:Name="mainwindow" x:Class="PythonEnv.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PythonEnv"      
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        
+        mc:Ignorable="d" 
+        Title="PyStudio" FlowDirection="LeftToRight" 
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen" Icon="source/image/logo.png" Loaded="Window_Loaded" BorderBrush="#4C4C4C" UseLayoutRounding="True" FontFamily="Microsoft YaHei UI" >
+
+
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
+        <CommandBinding Command="Open" CanExecute="OpenCommand_CanExecute" Executed="OpenCommand_Executed" />
+        <CommandBinding Command="Save" CanExecute="SaveCommand_CanExecute" Executed="SaveCommand_Executed" />
+    </Window.CommandBindings>
+    
+    <Grid >       
+        <DockPanel >
+            <StackPanel DockPanel.Dock="Top"  >
+                <Grid >
+                    <Menu   VerticalAlignment="Top"    Background="White" FontFamily="Microsoft YaHei UI" >
+                        <MenuItem Header="文件(_F)" >
+                            <MenuItem Header="新建" Command="New">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/New.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="打开" Command="Open" IsEnabled="True">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/Open.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="menu_import" Header="导入"  IsEnabled="True" Click="Menu_import_Click"  >
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/Import.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="menu_save" Header="保存" Command="Save" >
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/Save.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="设置" Name="menu_setting" Click="Menu_setting_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/icon-set-squares-empty.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="退出(_X)" Name="menu_exit" Click="Menu_exit_Click" >
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/sc_closepreview.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="编辑(_E)" >
+                            <MenuItem Header="剪切" Command="Cut">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/Cut.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="复制" Command="Copy">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/Copy.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="粘贴" Command="Paste">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/Paste.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="视图(_V)" >
+                            <MenuItem Header="工具栏" IsCheckable="True" IsChecked="True"></MenuItem>
+                            <MenuItem Header="状态栏" IsCheckable="True" IsChecked="True"></MenuItem>
+                            <MenuItem Header="自动换行" IsCheckable="True" IsChecked="{Binding ElementName=textEditor,Path=WordWrap}"></MenuItem>
+                            <MenuItem Header="行号" IsCheckable="True" IsChecked="{Binding ElementName=textEditor,Path=ShowLineNumbers}"></MenuItem>
+                            <MenuItem Header="行尾标记" IsCheckable="True" IsChecked="{Binding ElementName=textEditor,Path=Options.ShowEndOfLine}"></MenuItem>
+
+                        </MenuItem>
+                        <MenuItem Header="数据处理(T)" >
+                            <MenuItem Header="转置">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/transition-cover.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="筛选">
+                                <MenuItem.Icon>
+                                    <Image Source="source/image/formfilternavigator.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="数据合并">
+                                <MenuItem Header="纵向合并"></MenuItem>
+                                <MenuItem Header="横向合并"></MenuItem>
+                            </MenuItem>
+
+                        </MenuItem>
+                        <MenuItem Header="描述统计(_D)" >
+                            <MenuItem Header="打开"></MenuItem>
+                            <MenuItem Header="退出"></MenuItem>
+                        </MenuItem>
+
+                        <MenuItem Header="分析(_S)" >
+                            <MenuItem Header="相关"></MenuItem>
+                            <MenuItem Header="回归"></MenuItem>
+                            <MenuItem Header="分类"></MenuItem>
+                            <MenuItem Header="降维"></MenuItem>
+                            <MenuItem Header="非参数检验"></MenuItem>
+                            <MenuItem Header="时间序列预测"></MenuItem>
+                            <MenuItem Header="生存分析"></MenuItem>
+                            <MenuItem Header="ROC曲线"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="可视化(_V)" >
+                            <MenuItem Header="散点图"></MenuItem>
+                            <MenuItem Header="直方图"></MenuItem>
+                            <MenuItem Header="折线图"></MenuItem>
+                            <MenuItem Header="气泡图"></MenuItem>
+                            <MenuItem Header="箱图"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="模型(_M)" >
+                            <MenuItem Header="评分卡"></MenuItem>
+                            <MenuItem Header="决策树"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="关于(_A)" >
+                            <MenuItem Header="官方网站" Name="check_officesite" Click="Check_officesite_Click"></MenuItem>
+                            <MenuItem Header="python网站" Name="go_python_site" Click="Go_python_site_Click"></MenuItem>
+                            <MenuItem Header="pypi网站" Name="go_pypi_site" Click="Go_pypi_site_Click"></MenuItem>
+                            <MenuItem Header="pandas网站" Name="go_pandas_site" Click="Go_pandas_site_Click"></MenuItem>
+                            <MenuItem Header="sklearn网站" Name="go_sklearn_site" Click="Go_sklearn_site_Click"></MenuItem>
+                            <MenuItem Header="检查更新" Name="check_update" Click="Check_update_Click"></MenuItem>
+                            <MenuItem Header="帮助文档" Name="help_doc" Click="Help_doc_Click"></MenuItem>
+                            <MenuItem Name="readme" Header="关于" Click="Readme_Click" ></MenuItem>
+                        </MenuItem>
+
+                    </Menu>
+                </Grid>
+                <DockPanel Background="#FFEEF5FD"   >
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"></ColumnDefinition>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ToolBar ToolBarTray.IsLocked="True" >
+                            <ToolBar.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ButtonBase}, AncestorLevel=1}, Path=IsEnabled}" Value="False">
+                                            <Setter Property="Opacity" Value="0.30" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToolBar.Resources>
+                            <Button   Name="ex_test" Command="New" ToolTip="新建" Margin="5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black">
+                                <Image Source="source/image/New.png"  Height="20" Width="20"/>
+
+                            </Button>
+                            <Button   Name="py_test" Command="Open" ToolTip="剪切" Margin="5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" >
+                                <Image Source="source/image/Open.png"  Height="20" Width="20"/>
+
+                            </Button>
+                            <Button   BorderBrush="{x:Null}" Name="btn_import" ToolTip="导入" Margin="5" Padding="0" Click="Menu_import_Click" Background="{x:Null}">
+                                <Image Source="source/image/Import.png"  Height="20" Width="20"/>
+
+
+                            </Button>
+                            <Separator Margin="5"   />
+                            <Button  Name="btnCut"   ToolTip="剪切" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}" Command="Cut">
+                                <Image Source="source/image/Cut.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="btnCopy" Command="Copy"  ToolTip="复制" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/Copy.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="btnPaste" Command="Paste" ToolTip="粘贴" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/Paste.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="btnSave"  ToolTip="保存" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}" Command="Save">
+                                <Image Source="source/image/Save.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="btnDelete" Command="Delete" ToolTip="删除" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/Delete.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="btnUndo" Command="Undo" ToolTip="撤销" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/Undo.png" Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="btnRedo" Command="Redo" ToolTip="重做" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/Redo.png"  Height="20" Width="20" />
+                            </Button>
+                            <Separator Margin="5" />
+                            <Button  Name="python_ext" Click="Btn_ext_Click"  ToolTip="Python扩展管理" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/extension_32.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="python_run" Click="Python_run_Click"  ToolTip="运行" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/runbasic.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="cmd_run" Click="Cmd_run_Click"  ToolTip="终端" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/showdatanavigator.png"  Height="20" Width="20" />
+
+                            </Button>
+                            <Button  Name="ipython_run" Click="ipython_run_Click"  ToolTip="Ipython交互终端" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/python.png"  Height="20" Width="20" />
+                            </Button>
+                            <Button  Name="jupyter_run" Click="jupyter_run_Click"  ToolTip="Ipython交互终端" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <Image Source="source/image/jupyter.ico"  Height="20" Width="20" />
+                            </Button>
+
+
+
+                        </ToolBar>
+                        <ToolBar Grid.Column="1" HorizontalAlignment="Right" ToolBarTray.IsLocked="True">
+                            <Button Name="btn_view_var" ToolTip="查看变量"  Margin="5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="btn_view_var_Click" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="source/image/fontworksameletterheights.png"  Height="20" Width="20"/>
+                                    <Label Content="变量"></Label>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="btn_view_data" ToolTip="数据处理"  Margin="5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="btn_view_data_Click" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="source/image/dbviewtables.png"  Height="20" Width="20"/>
+                                    <Label Content="数据"></Label>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="btn_stat"  ToolTip="统计分析"  Margin="5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="btn_stat_Click" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="source/image/autosum.png"  Height="20" Width="20"/>
+                                    <Label Content="统计"></Label>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="btn_Visualize"  ToolTip="图表" BorderBrush="{x:Null}"  Margin="5" Padding="0" Click="btn_Visualize_Click" Background="{x:Null}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="source/image/columns_52x60.png"  Height="20" Width="20"/>
+                                    <Label Content="图表"></Label>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="btn_model"  Click="btn_model_Click"  ToolTip="模型" BorderBrush="{x:Null}" Margin="5" Padding="0" Background="{x:Null}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="source/image/bubble_52x60.png" ToolTip="模型" Height="20" Width="20" />
+                                    <Label Content="模型"></Label>
+                                </StackPanel>
+                            </Button>
+                        </ToolBar>
+                    </Grid>
+                       
+                  
+        </DockPanel>
+            </StackPanel>
+            <StatusBar HorizontalContentAlignment="Center" DockPanel.Dock="Bottom"  Background="#F0F0F0" FontFamily="Microsoft YaHei UI">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="50" />
+
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem HorizontalContentAlignment="Center" >
+                    <ComboBox Margin="1" Name="highlightingComboBox" SelectedItem="{Binding SyntaxHighlighting, ElementName=textEditor}" ItemsSource="{Binding Source={x:Static avalonEdit:HighlightingManager.Instance}, Path=HighlightingDefinitions}" FontSize="11" FontFamily="Segoe UI" />
+                </StatusBarItem>
+                <Separator Grid.Column="1"></Separator>
+                <StatusBarItem Grid.Column="2" HorizontalContentAlignment="Center">
+                    <TextBlock  Text="准备就绪" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StatusBarItem>
+                <Separator Grid.Column="3"></Separator>
+                <StatusBarItem Grid.Column="4" HorizontalAlignment="Center">
+                    <TextBlock Name="current_fiel_path" Text="C:/Python/demo.py" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StatusBarItem>
+                <Separator Grid.Column="5"></Separator>
+                <StatusBarItem Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock  Text="UTF-8" />
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="7">
+                    <TextBlock Name="txtStatus_row" Text="行：" />
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="8">
+                    <TextBlock Name="txtStatus_col" Text="列："/>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="9">
+                    <TextBlock Name="txtStatus_select" Text="已选："/>
+                </StatusBarItem>
+            </StatusBar>
+            <Border BorderThickness="2" BorderBrush="#f5f5f5">
+                <Grid Background="WhiteSmoke" >
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="25*"  />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="30*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid  >
+                            <TabControl>
+                                <TabItem Header="工作区间" Height="20" Width="90" >
+                                    <Canvas Name="pyCanvas" ClipToBounds="True">
+                                        <Button Canvas.Top="50" Canvas.Left="50" Background="{x:Null}" BorderBrush="{x:Null}">
+                                            <StackPanel >
+                                                <Image x:Name="pyStart" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"    Source="/PythonEnv;component/source/image/run_exc.png" RenderTransformOrigin="0.528,0.348" />
+                                                <TextBlock x:Name="pyStartText"  Text="开始"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button Canvas.Top="50" Canvas.Right="50" Background="{x:Null}" BorderBrush="{x:Null}">
+                                            <StackPanel >
+                                                <Image x:Name="pyStop" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"    Source="/PythonEnv;component/source/image/stop.png" RenderTransformOrigin="0.528,0.348" />
+                                                <TextBlock x:Name="pyStopText"  Text="结束"  HorizontalAlignment="Center" FontFamily="Arial" FontSize="11" />
+                                            </StackPanel>
+                                        </Button>
+                                    </Canvas>
+                                </TabItem>
+                                <TabItem Header="代码" Height="20" Width="90" IsSelected="True">
+                                    <avalonEdit:TextEditor  TextBlock.LineHeight="10" Name="textEditor" Grid.Column="1" FontFamily="/PythonEnv;component/source/font/#Source Code Pro" FontSize="15" SyntaxHighlighting="Python" ShowLineNumbers="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                                </TabItem>
+                                <TabItem Header="数据" Width="90">
+                                    <Grid Name="grid_pyview" Height="Auto">
+                                        <TextBlock x:Name="pyPreview" Padding="0" ><InlineUIContainer>
+                <DataGrid Height="{Binding Path=Height,ElementName=grid_pyview, Mode=TwoWay}" Width="{Binding Path=Width,ElementName=grid_pyview, Mode=TwoWay}" Name="tb_dataView" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Background="White">
+                   
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="" Binding="{Binding C0}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C1" Binding="{Binding C1}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C2" Binding="{Binding C2}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C3" Binding="{Binding C3}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C4" Binding="{Binding C4}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C5" Binding="{Binding C5}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C6" Binding="{Binding C6}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C7" Binding="{Binding C7}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C8" Binding="{Binding C8}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C9" Binding="{Binding C9}" IsReadOnly="True" Width="1*"/>
+                    <DataGridTextColumn Header="C10" Binding="{Binding C10}" IsReadOnly="True" Width="1*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+                                            </InlineUIContainer></TextBlock>
+                                    </Grid>
+                                </TabItem>
+
+                            </TabControl>
+                        </Grid>
+                        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch"></GridSplitter>
+                        <Grid Grid.Row="2">
+                            <TabControl TabStripPlacement="Left" >
+                                <TabControl.Resources>
+                                    <Style TargetType="{x:Type TabItem}">
+                                        <Setter Property="HeaderTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <ContentPresenter Content="{TemplateBinding Content}">
+                                                        <ContentPresenter.LayoutTransform>
+                                                            <RotateTransform Angle="270" />
+                                                        </ContentPresenter.LayoutTransform>
+                                                    </ContentPresenter>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Padding" Value="3" />
+                                    </Style>
+                                </TabControl.Resources>
+                                <TabItem Header="选项"  >
+                                    <Grid>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="输出" IsSelected="True"  >
+                                    <Grid>
+                                        <TextBox Name="pyOutput" Padding="0"></TextBox>
+                                    </Grid>
+                                </TabItem>
+                                
+                                <TabItem Header="日志" >
+                                    <Grid>
+                                        <TextBlock Name="pyLog" Padding="0"></TextBlock>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="控制台" >
+                                    <Grid>
+                                        <TextBlock Name="pyCmd" Padding="0"></TextBlock>
+                                    </Grid>
+                                </TabItem>
+
+
+
+
+                            </TabControl>
+                        </Grid>
+
+                    </Grid>
+                    <GridSplitter Grid.Column="1"  HorizontalAlignment="Stretch" Background="#F0F0F0"></GridSplitter>
+                    <Grid Grid.Column="2"  Background="#F0F0F0"  >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"></RowDefinition>
+                                <RowDefinition Height="5"></RowDefinition>
+                                <RowDefinition Height="60*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid Background="White" >
+                                    <Frame x:Name="right_frame" Source="Pages/Core/Data.xaml"  NavigationUIVisibility="Hidden"/>
+                                </Grid>
+                            </Grid>
+                            <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch"></GridSplitter>
+                            <Grid Grid.Row="2">
+                                <TabControl  >
+                                    <TabItem Header="文件" Width="90" Height="30" >
+                                        <Grid>
+                                            <TreeView FontFamily="Segoe UI" FontSize="14" BorderBrush="{x:Null}"  >
+
+                                                <TreeViewItem IsExpanded="True">
+                                                    <TreeViewItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/folder.png" />
+
+                                                            <TextBlock Margin="2" Text="数据集" />
+                                                        </StackPanel>
+                                                    </TreeViewItem.Header>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/dbqueryedit.png" />
+
+                                                                <TextBlock Margin="2" Text="Titanic" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/dbqueryedit.png" />
+
+                                                                <TextBlock Margin="2" Text="iris" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/dbqueryedit.png" />
+
+                                                                <TextBlock Margin="2" Text="mushrooms" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/dbqueryedit.png" />
+
+                                                                <TextBlock Margin="2" Text="UCI_Credit_Card" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                </TreeViewItem>
+                                                <TreeViewItem IsExpanded="False">
+                                                    <TreeViewItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/folder.png" />
+
+                                                            <TextBlock Margin="2" Text="流程" />
+                                                        </StackPanel>
+                                                    </TreeViewItem.Header>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/flowchartshapes.png" />
+
+                                                                <TextBlock Margin="2" Text="示例流程" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                </TreeViewItem>
+                                                <TreeViewItem IsExpanded="False">
+                                                    <TreeViewItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/folder.png" />
+
+                                                            <TextBlock Margin="2" Text="代码" />
+                                                        </StackPanel>
+                                                    </TreeViewItem.Header>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/code.png" />
+
+                                                                <TextBlock Margin="2" Text="示例代码" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                </TreeViewItem>
+                                                <TreeViewItem IsExpanded="False">
+                                                    <TreeViewItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/folder.png" />
+
+                                                            <TextBlock Margin="2" Text="模型" />
+                                                        </StackPanel>
+                                                    </TreeViewItem.Header>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/lc_definedbname.png" />
+
+                                                                <TextBlock Margin="2" Text="逻辑回归" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/lc_definedbname.png" />
+
+                                                                <TextBlock Margin="2" Text="决策树" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                    <TreeViewItem >
+                                                        <TreeViewItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Height="20" Width="20" Margin="2" Source="/PythonEnv;component/source/image/lc_definedbname.png" />
+
+                                                                <TextBlock Margin="2" Text="评分卡" />
+                                                            </StackPanel>
+                                                        </TreeViewItem.Header>
+                                                    </TreeViewItem>
+                                                </TreeViewItem>
+                                            </TreeView>
+
+                                        </Grid>
+                                    </TabItem>
+
+                                    <TabItem Header="属性" Width="90" Height="30">
+                                        <WindowsFormsHost  HorizontalAlignment="Left" Margin="18,12,0,0" Name="windowsFormsHost1" VerticalAlignment="Top" >
+                                            <forms:PropertyGrid x:Name="propertyGrid"/>
+                                        </WindowsFormsHost>
+                                    </TabItem>
+                                    
+
+
+                                </TabControl>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+
+                </Grid>
+            </Border>
+        </DockPanel>
+
+
+    </Grid>
+</Window>

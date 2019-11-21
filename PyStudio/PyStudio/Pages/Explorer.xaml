@@ -1,0 +1,47 @@
+﻿<Window x:Class="PythonEnv.pages.Explorer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PythonEnv.pages"
+        mc:Ignorable="d" 
+        Title="Explorer" Height="450" Width="800">
+    <Grid>
+        <Grid Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+                <ColumnDefinition Width="70*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0" Margin="20" >
+                <TreeViewItem Header="常规" IsExpanded="True" >
+                    <TreeViewItem Header="常规" />
+                    <TreeViewItem Header="主题" />
+                    <TreeViewItem Header="编辑器" IsExpanded="True">
+                        <TreeViewItem Header="字体" />
+                        <TreeViewItem Header="颜色" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="项目" />
+                </TreeViewItem>
+                <TreeViewItem Header="环境" >
+                    <TreeViewItem Header="常规" />
+                    <TreeViewItem Header="解释器" />
+
+                </TreeViewItem>
+
+            </TreeView>
+
+
+            <Border Grid.Row="0" Grid.Column="1" Margin="20" BorderThickness="2" BorderBrush="Blue">
+                <StackPanel   >
+                    <TextBlock Margin="5">test</TextBlock>
+                    <TextBlock Margin="5">test</TextBlock>
+                    <TextBlock Margin="5">test</TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

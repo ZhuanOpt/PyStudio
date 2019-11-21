@@ -1,0 +1,69 @@
+﻿<Window x:Class="PythonEnv.pages.NewItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PythonEnv.pages"
+        mc:Ignorable="d"
+        Title="新建" Height="300" Width="500" WindowStartupLocation="CenterScreen" Icon="/PythonEnv;component/Source/Image/logo.png" >
+    <Grid>
+        <Label Content="新建文件类型" HorizontalAlignment="Center" Height="30"  VerticalAlignment="Top" Margin="201.422,10,199.741,0"/>
+
+        <ListView Margin="10,45,10,10">
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/text.png" />
+                    <TextBlock Margin="2">文本文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem IsSelected="True" >
+                <StackPanel Orientation="Horizontal" >
+                    <Image Height="15" Width="15" Margin="2" Name="python_file" Source="/PythonEnv;component/source/image/python.png" />
+                    <TextBlock Margin="2">Python文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/r.ico" />
+                    <TextBlock Margin="2">R 文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/sas.ico" />
+                    <TextBlock Margin="2">SAS 文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/spss.ico" />
+                    <TextBlock Margin="2">SPSS 文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/html.ico" />
+                    <TextBlock Margin="2">HTML文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal" >
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/Javascript.ico" />
+                    <TextBlock >Javascript 文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/file.png" />
+                    <TextBlock Margin="2">自定义文件</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="15" Width="15" Margin="2" Source="/PythonEnv;component/source/image/folder.png" />
+                    <TextBlock Margin="2">文件夹</TextBlock>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+    </Grid>
+</Window>

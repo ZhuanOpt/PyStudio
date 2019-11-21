@@ -1,0 +1,2308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2ABAC3A3-DD05-4766-A0C7-DE5E00F49939}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PythonEnv</RootNamespace>
+    <AssemblyName>PythonEnv</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Source\Image\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.6.0.0\lib\net45\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Pages\Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Opinion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Opinion.xaml.cs">
+      <DependentUpon>Opinion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\Core\Data.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Env.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Explorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Import.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Core\Model.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Plot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\prop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Readme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Core\Stat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Core\Var.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Core\Visualize.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\Core\Data.xaml.cs">
+      <DependentUpon>Data.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Env.xaml.cs">
+      <DependentUpon>Env.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Explorer.xaml.cs">
+      <DependentUpon>Explorer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Import.xaml.cs">
+      <DependentUpon>Import.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Core\Model.xaml.cs">
+      <DependentUpon>Model.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewItem.xaml.cs">
+      <DependentUpon>NewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Plot.xaml.cs">
+      <DependentUpon>Plot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\prop.xaml.cs">
+      <DependentUpon>prop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Readme.xaml.cs">
+      <DependentUpon>Readme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Core\Stat.xaml.cs">
+      <DependentUpon>Stat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Core\Var.xaml.cs">
+      <DependentUpon>Var.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Core\Visualize.xaml.cs">
+      <DependentUpon>Visualize.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Source\Font\SourceCodePro-Bold.ttf" />
+    <Resource Include="Source\Font\SourceCodePro-BoldIt.ttf" />
+    <Resource Include="Source\Font\SourceCodePro-It.ttf" />
+    <Resource Include="Source\Font\SourceCodePro-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\errorbox.png" />
+    <Resource Include="Source\Image\infobox.png" />
+    <Resource Include="Source\Image\querybox.png" />
+    <Resource Include="Source\Image\warningbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\columns_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\nostackdirectboth_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\pie_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\bubble_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\areas_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\stockcolumns_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\areaspiled_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\netfill_52x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\statisticsmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\runbasic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\python.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dataprovider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dbviewtables.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\showdatanavigator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\autosum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dbviewfunctions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\formfilternavigator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_dbnewviewsql.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\fontworksameletterheights.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\WordWrap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\icon-set-squares-empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\sc_closepreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\transition-cover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\extension_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\wordcountdialog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\distributecolumns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dbdistinctvalues.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\zoomnext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\viewrowcolumnheaders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dbaddrelation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_mergedocuments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_togglemergecells.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\mergecells.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\mergedocuments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\transition-random.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\graphicfilterpopart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\deletecolumns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\deleterows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\entirecolumn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\hlinettp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dbquerydelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\removehyperlink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\dbqueryedit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\inserthyperlink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\outlineformat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\formatarea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\graphicfiltersmooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\r.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\sas.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\spss.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\html.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\javascript.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Extensions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\Progress64.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\code.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\flowchartshapes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\NavOverFlow_Break.png" />
+    <Resource Include="Source\Image\NavOverFlow_Info.png" />
+    <Resource Include="Source\Image\NavOverFlow_Start.png" />
+    <Resource Include="Source\Image\NavOverFlow_Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_dbviewqueries.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_dbviewaliases.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_defaultbullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_defaultcharstyle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_definedbname.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_definename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\lc_acceptalltrackedchanges.png" />
+    <Resource Include="Source\Image\lc_accepttrackedchange.png" />
+    <Resource Include="Source\Image\lc_accepttrackedchanges.png" />
+    <Resource Include="Source\Image\lc_actionmode.png" />
+    <Resource Include="Source\Image\lc_adddirect.png" />
+    <Resource Include="Source\Image\lc_addfield.png" />
+    <Resource Include="Source\Image\lc_addressbooksource.png" />
+    <Resource Include="Source\Image\lc_addwatch.png" />
+    <Resource Include="Source\Image\lc_advancedmode.png" />
+    <Resource Include="Source\Image\lc_alignblock.png" />
+    <Resource Include="Source\Image\lc_alignbottom.png" />
+    <Resource Include="Source\Image\lc_aligncenter.png" />
+    <Resource Include="Source\Image\lc_aligndown.png" />
+    <Resource Include="Source\Image\lc_alignhorizontalcenter.png" />
+    <Resource Include="Source\Image\lc_alignleft.png" />
+    <Resource Include="Source\Image\lc_alignmiddle.png" />
+    <Resource Include="Source\Image\lc_alignright.png" />
+    <Resource Include="Source\Image\lc_aligntop.png" />
+    <Resource Include="Source\Image\lc_alignup.png" />
+    <Resource Include="Source\Image\lc_alignverticalcenter.png" />
+    <Resource Include="Source\Image\lc_alphaliststyle.png" />
+    <Resource Include="Source\Image\lc_alphalowliststyle.png" />
+    <Resource Include="Source\Image\lc_animationeffects.png" />
+    <Resource Include="Source\Image\lc_animationmode.png" />
+    <Resource Include="Source\Image\lc_animationobjects.png" />
+    <Resource Include="Source\Image\lc_arc.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.chevron.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.circular-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.corner-right-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.down-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.down-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.left-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.left-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.left-right-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.notched-right-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.pentagon-right.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.quad-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.quad-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.right-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.right-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.s-sharped-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.split-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.split-round-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.striped-right-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-down-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-down-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-right-arrow-callout.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-right-arrow.png" />
+    <Resource Include="Source\Image\lc_arrowshapes.up-right-down-arrow.png" />
+    <Resource Include="Source\Image\lc_assignlayout.png" />
+    <Resource Include="Source\Image\lc_attributepagesize.png" />
+    <Resource Include="Source\Image\lc_auditingfillmode.png" />
+    <Resource Include="Source\Image\lc_autocontrolfocus.png" />
+    <Resource Include="Source\Image\lc_autoformat.png" />
+    <Resource Include="Source\Image\lc_autooutline.png" />
+    <Resource Include="Source\Image\lc_autopilotmenu.png" />
+    <Resource Include="Source\Image\lc_autosum.png" />
+    <Resource Include="Source\Image\lc_avmediaplayer.png" />
+    <Resource Include="Source\Image\lc_backcolor.png" />
+    <Resource Include="Source\Image\lc_backgroundcolor.png" />
+    <Resource Include="Source\Image\lc_backward.png" />
+    <Resource Include="Source\Image\lc_basicideappear.png" />
+    <Resource Include="Source\Image\lc_basicshapes.block-arc.png" />
+    <Resource Include="Source\Image\lc_basicshapes.can.png" />
+    <Resource Include="Source\Image\lc_basicshapes.cross.png" />
+    <Resource Include="Source\Image\lc_basicshapes.cube.png" />
+    <Resource Include="Source\Image\lc_basicshapes.diamond.png" />
+    <Resource Include="Source\Image\lc_basicshapes.hexagon.png" />
+    <Resource Include="Source\Image\lc_basicshapes.isosceles-triangle.png" />
+    <Resource Include="Source\Image\lc_basicshapes.octagon.png" />
+    <Resource Include="Source\Image\lc_basicshapes.paper.png" />
+    <Resource Include="Source\Image\lc_basicshapes.pentagon.png" />
+    <Resource Include="Source\Image\lc_basicshapes.right-triangle.png" />
+    <Resource Include="Source\Image\lc_basicshapes.ring.png" />
+    <Resource Include="Source\Image\lc_basicshapes.round-quadrat.png" />
+    <Resource Include="Source\Image\lc_basicshapes.trapezoid.png" />
+    <Resource Include="Source\Image\lc_basicstepinto.png" />
+    <Resource Include="Source\Image\lc_basicstepout.png" />
+    <Resource Include="Source\Image\lc_basicstepover.png" />
+    <Resource Include="Source\Image\lc_basicstop.png" />
+    <Resource Include="Source\Image\lc_beforeobject.png" />
+    <Resource Include="Source\Image\lc_behindobject.png" />
+    <Resource Include="Source\Image\lc_bezierappend.png" />
+    <Resource Include="Source\Image\lc_bezierclose.png" />
+    <Resource Include="Source\Image\lc_bezierconvert.png" />
+    <Resource Include="Source\Image\lc_beziercutline.png" />
+    <Resource Include="Source\Image\lc_bezierdelete.png" />
+    <Resource Include="Source\Image\lc_beziereliminatepoints.png" />
+    <Resource Include="Source\Image\lc_bezierfill.png" />
+    <Resource Include="Source\Image\lc_bezierinsert.png" />
+    <Resource Include="Source\Image\lc_beziermove.png" />
+    <Resource Include="Source\Image\lc_beziersmooth.png" />
+    <Resource Include="Source\Image\lc_beziersymmetric.png" />
+    <Resource Include="Source\Image\lc_bezier_unfilled.png" />
+    <Resource Include="Source\Image\lc_bibliographycomponent.png" />
+    <Resource Include="Source\Image\lc_bmpmask.png" />
+    <Resource Include="Source\Image\lc_bold.png" />
+    <Resource Include="Source\Image\lc_borderdialog.png" />
+    <Resource Include="Source\Image\lc_break.png" />
+    <Resource Include="Source\Image\lc_bringtofront.png" />
+    <Resource Include="Source\Image\lc_browseview.png" />
+    <Resource Include="Source\Image\lc_bullet.png" />
+    <Resource Include="Source\Image\lc_bulletsandnumberingdialog.png" />
+    <Resource Include="Source\Image\lc_calculate.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.cloud-callout.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.line-callout-1.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.line-callout-2.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.line-callout-3.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.rectangular-callout.png" />
+    <Resource Include="Source\Image\lc_calloutshapes.round-callout.png" />
+    <Resource Include="Source\Image\lc_cancel.png" />
+    <Resource Include="Source\Image\lc_capturepoint.png" />
+    <Resource Include="Source\Image\lc_chainframes.png" />
+    <Resource Include="Source\Image\lc_changebezier.png" />
+    <Resource Include="Source\Image\lc_changecasetolower.png" />
+    <Resource Include="Source\Image\lc_changecasetoupper.png" />
+    <Resource Include="Source\Image\lc_changepicture.png" />
+    <Resource Include="Source\Image\lc_changepolygon.png" />
+    <Resource Include="Source\Image\lc_charfontname.png" />
+    <Resource Include="Source\Image\lc_charmapcontrol.png" />
+    <Resource Include="Source\Image\lc_checkbox.png" />
+    <Resource Include="Source\Image\lc_choosecontrols.png" />
+    <Resource Include="Source\Image\lc_choosedesign.png" />
+    <Resource Include="Source\Image\lc_choosemacro.png" />
+    <Resource Include="Source\Image\lc_choosepolygon.png" />
+    <Resource Include="Source\Image\lc_circle.png" />
+    <Resource Include="Source\Image\lc_circlearc.png" />
+    <Resource Include="Source\Image\lc_circlecut.png" />
+    <Resource Include="Source\Image\lc_circlecut_unfilled.png" />
+    <Resource Include="Source\Image\lc_circlepie.png" />
+    <Resource Include="Source\Image\lc_circlepie_unfilled.png" />
+    <Resource Include="Source\Image\lc_circle_unfilled.png" />
+    <Resource Include="Source\Image\lc_cleararrowdependents.png" />
+    <Resource Include="Source\Image\lc_cleararrowprecedents.png" />
+    <Resource Include="Source\Image\lc_cleararrows.png" />
+    <Resource Include="Source\Image\lc_closedoc.png" />
+    <Resource Include="Source\Image\lc_closemasterview.png" />
+    <Resource Include="Source\Image\lc_closepreview.png" />
+    <Resource Include="Source\Image\lc_color.png" />
+    <Resource Include="Source\Image\lc_colorscaleformatdialog.png" />
+    <Resource Include="Source\Image\lc_combine.png" />
+    <Resource Include="Source\Image\lc_combobox.png" />
+    <Resource Include="Source\Image\lc_commentchangetracking.png" />
+    <Resource Include="Source\Image\lc_comparedocuments.png" />
+    <Resource Include="Source\Image\lc_compilebasic.png" />
+    <Resource Include="Source\Image\lc_compressgraphic.png" />
+    <Resource Include="Source\Image\lc_conditionalformatdialog.png" />
+    <Resource Include="Source\Image\lc_cone.png" />
+    <Resource Include="Source\Image\lc_config.png" />
+    <Resource Include="Source\Image\lc_configuredialog.png" />
+    <Resource Include="Source\Image\lc_connect.png" />
+    <Resource Include="Source\Image\lc_connector.png" />
+    <Resource Include="Source\Image\lc_connectorarrowend.png" />
+    <Resource Include="Source\Image\lc_connectorarrows.png" />
+    <Resource Include="Source\Image\lc_connectorarrowstart.png" />
+    <Resource Include="Source\Image\lc_connectorcircleend.png" />
+    <Resource Include="Source\Image\lc_connectorcirclestart.png" />
+    <Resource Include="Source\Image\lc_connectorcurve.png" />
+    <Resource Include="Source\Image\lc_connectorcurvearrowend.png" />
+    <Resource Include="Source\Image\lc_connectorcurvearrows.png" />
+    <Resource Include="Source\Image\lc_connectorcurvearrowstart.png" />
+    <Resource Include="Source\Image\lc_connectorcurvecircleend.png" />
+    <Resource Include="Source\Image\lc_connectorcurvecirclestart.png" />
+    <Resource Include="Source\Image\lc_connectorline.png" />
+    <Resource Include="Source\Image\lc_connectorlinearrowend.png" />
+    <Resource Include="Source\Image\lc_connectorlinearrows.png" />
+    <Resource Include="Source\Image\lc_connectorlinearrowstart.png" />
+    <Resource Include="Source\Image\lc_connectorlinecircleend.png" />
+    <Resource Include="Source\Image\lc_connectorlinecirclestart.png" />
+    <Resource Include="Source\Image\lc_connectorlines.png" />
+    <Resource Include="Source\Image\lc_connectorlinesarrowend.png" />
+    <Resource Include="Source\Image\lc_connectorlinesarrows.png" />
+    <Resource Include="Source\Image\lc_connectorlinesarrowstart.png" />
+    <Resource Include="Source\Image\lc_connectorlinescircleend.png" />
+    <Resource Include="Source\Image\lc_connectorlinescirclestart.png" />
+    <Resource Include="Source\Image\lc_controlcodes.png" />
+    <Resource Include="Source\Image\lc_controlproperties.png" />
+    <Resource Include="Source\Image\lc_convertinto3d.png" />
+    <Resource Include="Source\Image\lc_convertinto3dlathe.png" />
+    <Resource Include="Source\Image\lc_copy.png" />
+    <Resource Include="Source\Image\lc_copyobjects.png" />
+    <Resource Include="Source\Image\lc_crookrotate.png" />
+    <Resource Include="Source\Image\lc_crookslant.png" />
+    <Resource Include="Source\Image\lc_crop.png" />
+    <Resource Include="Source\Image\lc_cube.png" />
+    <Resource Include="Source\Image\lc_currencyfield.png" />
+    <Resource Include="Source\Image\lc_customshowdialog.png" />
+    <Resource Include="Source\Image\lc_cut.png" />
+    <Resource Include="Source\Image\lc_cylinder.png" />
+    <Resource Include="Source\Image\lc_cyramid.png" />
+    <Resource Include="Source\Image\lc_dataarearefresh.png" />
+    <Resource Include="Source\Image\lc_databarformatdialog.png" />
+    <Resource Include="Source\Image\lc_dataconsolidate.png" />
+    <Resource Include="Source\Image\lc_datadatapilotrun.png" />
+    <Resource Include="Source\Image\lc_datafilterautofilter.png" />
+    <Resource Include="Source\Image\lc_datafilterspecialfilter.png" />
+    <Resource Include="Source\Image\lc_datafilterstandardfilter.png" />
+    <Resource Include="Source\Image\lc_dataimport.png" />
+    <Resource Include="Source\Image\lc_dataincolumns.png" />
+    <Resource Include="Source\Image\lc_datainrows.png" />
+    <Resource Include="Source\Image\lc_dataprovider.png" />
+    <Resource Include="Source\Image\lc_dataranges.png" />
+    <Resource Include="Source\Image\lc_datasort.png" />
+    <Resource Include="Source\Image\lc_datastreams.png" />
+    <Resource Include="Source\Image\lc_datasubtotals.png" />
+    <Resource Include="Source\Image\lc_datefield.png" />
+    <Resource Include="Source\Image\lc_dbaddrelation.png" />
+    <Resource Include="Source\Image\lc_dbchangedesignmode.png" />
+    <Resource Include="Source\Image\lc_dbclearquery.png" />
+    <Resource Include="Source\Image\lc_dbdistinctvalues.png" />
+    <Resource Include="Source\Image\lc_dbformdelete.png" />
+    <Resource Include="Source\Image\lc_dbformedit.png" />
+    <Resource Include="Source\Image\lc_dbformrename.png" />
+    <Resource Include="Source\Image\lc_dbindexdesign.png" />
+    <Resource Include="Source\Image\lc_dbnewform.png" />
+    <Resource Include="Source\Image\lc_dbnewquery.png" />
+    <Resource Include="Source\Image\lc_dbnewreport.png" />
+    <Resource Include="Source\Image\lc_dbnewtable.png" />
+    <Resource Include="Source\Image\lc_dbquerydelete.png" />
+    <Resource Include="Source\Image\lc_dbqueryedit.png" />
+    <Resource Include="Source\Image\lc_dbquerypropertiesdialog.png" />
+    <Resource Include="Source\Image\lc_dbqueryrename.png" />
+    <Resource Include="Source\Image\lc_dbreportdelete.png" />
+    <Resource Include="Source\Image\lc_dbreportedit.png" />
+    <Resource Include="Source\Image\lc_dbreportrename.png" />
+    <Resource Include="Source\Image\lc_dbsortingandgrouping.png" />
+    <Resource Include="Source\Image\lc_dbtabledelete.png" />
+    <Resource Include="Source\Image\lc_dbtableedit.png" />
+    <Resource Include="Source\Image\lc_dbtablerename.png" />
+    <Resource Include="Source\Image\lc_dbviewforms.png" />
+    <Resource Include="Source\Image\lc_dbviewfunctions.png" />
+    <Resource Include="Source\Image\lc_dbviewreports.png" />
+    <Resource Include="Source\Image\lc_dbviewtablenames.png" />
+    <Resource Include="Source\Image\lc_dbviewtables.png" />
+    <Resource Include="Source\Image\lc_decrementindent.png" />
+    <Resource Include="Source\Image\lc_decrementlevel.png" />
+    <Resource Include="Source\Image\lc_decrementsublevels.png" />
+    <Resource Include="Source\Image\lc_defaultnumbering.png" />
+    <Resource Include="Source\Image\lc_defineprintarea.png" />
+    <Resource Include="Source\Image\lc_delete.png" />
+    <Resource Include="Source\Image\lc_deleteallannotation.png" />
+    <Resource Include="Source\Image\lc_deleteannotation.png" />
+    <Resource Include="Source\Image\lc_deletecell.png" />
+    <Resource Include="Source\Image\lc_deletecolumns.png" />
+    <Resource Include="Source\Image\lc_deletecomment.png" />
+    <Resource Include="Source\Image\lc_deletemasterpage.png" />
+    <Resource Include="Source\Image\lc_deletepage.png" />
+    <Resource Include="Source\Image\lc_deleterows.png" />
+    <Resource Include="Source\Image\lc_deletetable.png" />
+    <Resource Include="Source\Image\lc_designerdialog.png" />
+    <Resource Include="Source\Image\lc_dia.png" />
+    <Resource Include="Source\Image\lc_diaeffect.png" />
+    <Resource Include="Source\Image\lc_diagramarea.png" />
+    <Resource Include="Source\Image\lc_diagramaxis.png" />
+    <Resource Include="Source\Image\lc_diagramaxisx.png" />
+    <Resource Include="Source\Image\lc_diagramaxisxyz.png" />
+    <Resource Include="Source\Image\lc_diagramaxisy.png" />
+    <Resource Include="Source\Image\lc_diagramaxisz.png" />
+    <Resource Include="Source\Image\lc_diagramdata.png" />
+    <Resource Include="Source\Image\lc_diagramtype.png" />
+    <Resource Include="Source\Image\lc_diagramwall.png" />
+    <Resource Include="Source\Image\lc_diamode.png" />
+    <Resource Include="Source\Image\lc_diaspeed.png" />
+    <Resource Include="Source\Image\lc_diatime.png" />
+    <Resource Include="Source\Image\lc_dismantle.png" />
+    <Resource Include="Source\Image\lc_displaymasterbackground.png" />
+    <Resource Include="Source\Image\lc_displaymasterobjects.png" />
+    <Resource Include="Source\Image\lc_displaymode.png" />
+    <Resource Include="Source\Image\lc_distributecolumns.png" />
+    <Resource Include="Source\Image\lc_distributerows.png" />
+    <Resource Include="Source\Image\lc_distributeselection.png" />
+    <Resource Include="Source\Image\lc_downsearch.png" />
+    <Resource Include="Source\Image\lc_drawcaption.png" />
+    <Resource Include="Source\Image\lc_drawchart.png" />
+    <Resource Include="Source\Image\lc_dsbformletter.png" />
+    <Resource Include="Source\Image\lc_dsbinsertcontent.png" />
+    <Resource Include="Source\Image\lc_duplicatepage.png" />
+    <Resource Include="Source\Image\lc_edit.png" />
+    <Resource Include="Source\Image\lc_editannotation.png" />
+    <Resource Include="Source\Image\lc_editdoc.png" />
+    <Resource Include="Source\Image\lc_editglossary.png" />
+    <Resource Include="Source\Image\lc_editheaderandfooter.png" />
+    <Resource Include="Source\Image\lc_editstyle.png" />
+    <Resource Include="Source\Image\lc_ellipse.png" />
+    <Resource Include="Source\Image\lc_ellipsecut.png" />
+    <Resource Include="Source\Image\lc_ellipsecut_unfilled.png" />
+    <Resource Include="Source\Image\lc_ellipse_unfilled.png" />
+    <Resource Include="Source\Image\lc_emphasischarstyle.png" />
+    <Resource Include="Source\Image\lc_entergroup.png" />
+    <Resource Include="Source\Image\lc_entirecell.png" />
+    <Resource Include="Source\Image\lc_entirecolumn.png" />
+    <Resource Include="Source\Image\lc_entirerow.png" />
+    <Resource Include="Source\Image\lc_equalizeheight.png" />
+    <Resource Include="Source\Image\lc_equalizewidth.png" />
+    <Resource Include="Source\Image\lc_euroconverter.png" />
+    <Resource Include="Source\Image\lc_executereport.png" />
+    <Resource Include="Source\Image\lc_expandpage.png" />
+    <Resource Include="Source\Image\lc_exportdialog.png" />
+    <Resource Include="Source\Image\lc_exportdirecttoepub.png" />
+    <Resource Include="Source\Image\lc_exportdirecttopdf.png" />
+    <Resource Include="Source\Image\lc_exportto.png" />
+    <Resource Include="Source\Image\lc_extendedhelp.png" />
+    <Resource Include="Source\Image\lc_extrusion3dcolor.png" />
+    <Resource Include="Source\Image\lc_extrusiondepthfloater.png" />
+    <Resource Include="Source\Image\lc_extrusiondirectionfloater.png" />
+    <Resource Include="Source\Image\lc_extrusionlightingfloater.png" />
+    <Resource Include="Source\Image\lc_extrusionsurfacefloater.png" />
+    <Resource Include="Source\Image\lc_extrusiontiltdown.png" />
+    <Resource Include="Source\Image\lc_extrusiontiltleft.png" />
+    <Resource Include="Source\Image\lc_extrusiontiltright.png" />
+    <Resource Include="Source\Image\lc_extrusiontiltup.png" />
+    <Resource Include="Source\Image\lc_extrusiontoggle.png" />
+    <Resource Include="Source\Image\lc_fields.png" />
+    <Resource Include="Source\Image\lc_filecontrol.png" />
+    <Resource Include="Source\Image\lc_filefield.png" />
+    <Resource Include="Source\Image\lc_fillshadow.png" />
+    <Resource Include="Source\Image\lc_firstpage.png" />
+    <Resource Include="Source\Image\lc_firstrecord.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-card.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-collate.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-data.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-decision.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-delay.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-direct-access-storage.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-display.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-document.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-internal-storage.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-manual-input.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-multidocument.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-off-page-connector.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-or.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-predefined-process.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-preparation.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-punched-tape.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-sequential-access.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-sort.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-stored-data.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-summing-junction.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.flowchart-terminator.png" />
+    <Resource Include="Source\Image\lc_flowchartshapes.png" />
+    <Resource Include="Source\Image\lc_fontdialog.png" />
+    <Resource Include="Source\Image\lc_fontwork.png" />
+    <Resource Include="Source\Image\lc_fontworkgalleryfloater.png" />
+    <Resource Include="Source\Image\lc_fontworksameletterheights.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-down-curve.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-down-pour.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-left-curve.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-left-pour.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-right-curve.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-right-pour.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-up-curve.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-arch-up-pour.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-chevron-down.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-chevron-up.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-circle-curve.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-curve-down.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-curve-up.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-fade-left.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-fade-right.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-fade-up-and-left.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-fade-up-and-right.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-fade-up.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-inflate.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-open-circle-curve.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-open-circle-pour.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-plain-text.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-slant-down.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-slant-up.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-stop.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-triangle-down.png" />
+    <Resource Include="Source\Image\lc_fontworkshapetype.fontwork-wave.png" />
+    <Resource Include="Source\Image\lc_footnotedialog.png" />
+    <Resource Include="Source\Image\lc_formatarea.png" />
+    <Resource Include="Source\Image\lc_formatcolumns.png" />
+    <Resource Include="Source\Image\lc_formatgroup.png" />
+    <Resource Include="Source\Image\lc_formatline.png" />
+    <Resource Include="Source\Image\lc_formatpaintbrush.png" />
+    <Resource Include="Source\Image\lc_formattedfield.png" />
+    <Resource Include="Source\Image\lc_formatungroup.png" />
+    <Resource Include="Source\Image\lc_formdesigntools.png" />
+    <Resource Include="Source\Image\lc_formelcursor.png" />
+    <Resource Include="Source\Image\lc_formfiltered.png" />
+    <Resource Include="Source\Image\lc_formfilternavigator.png" />
+    <Resource Include="Source\Image\lc_formproperties.png" />
+    <Resource Include="Source\Image\lc_forward.png" />
+    <Resource Include="Source\Image\lc_framedialog.png" />
+    <Resource Include="Source\Image\lc_framelinecolor.png" />
+    <Resource Include="Source\Image\lc_freeline.png" />
+    <Resource Include="Source\Image\lc_freeline_unfilled.png" />
+    <Resource Include="Source\Image\lc_freezepanes.png" />
+    <Resource Include="Source\Image\lc_freezepanesfirstcolumn.png" />
+    <Resource Include="Source\Image\lc_freezepanesfirstrow.png" />
+    <Resource Include="Source\Image\lc_fullscreen.png" />
+    <Resource Include="Source\Image\lc_gallery.png" />
+    <Resource Include="Source\Image\lc_glueeditmode.png" />
+    <Resource Include="Source\Image\lc_glueescapedirectionbottom.png" />
+    <Resource Include="Source\Image\lc_glueescapedirectionleft.png" />
+    <Resource Include="Source\Image\lc_glueescapedirectionright.png" />
+    <Resource Include="Source\Image\lc_glueescapedirectiontop.png" />
+    <Resource Include="Source\Image\lc_gluehorzaligncenter.png" />
+    <Resource Include="Source\Image\lc_gluehorzalignleft.png" />
+    <Resource Include="Source\Image\lc_gluehorzalignright.png" />
+    <Resource Include="Source\Image\lc_glueinsertpoint.png" />
+    <Resource Include="Source\Image\lc_gluepercent.png" />
+    <Resource Include="Source\Image\lc_gluevertalignbottom.png" />
+    <Resource Include="Source\Image\lc_gluevertaligncenter.png" />
+    <Resource Include="Source\Image\lc_gluevertaligntop.png" />
+    <Resource Include="Source\Image\lc_goalseekdialog.png" />
+    <Resource Include="Source\Image\lc_gotopage.png" />
+    <Resource Include="Source\Image\lc_grafattrcrop.png" />
+    <Resource Include="Source\Image\lc_grafblue.png" />
+    <Resource Include="Source\Image\lc_grafcontrast.png" />
+    <Resource Include="Source\Image\lc_grafgreen.png" />
+    <Resource Include="Source\Image\lc_grafluminance.png" />
+    <Resource Include="Source\Image\lc_grafred.png" />
+    <Resource Include="Source\Image\lc_graftransparence.png" />
+    <Resource Include="Source\Image\lc_graphic.png" />
+    <Resource Include="Source\Image\lc_graphicdialog.png" />
+    <Resource Include="Source\Image\lc_graphicfilterinvert.png" />
+    <Resource Include="Source\Image\lc_graphicfiltermosaic.png" />
+    <Resource Include="Source\Image\lc_graphicfilterpopart.png" />
+    <Resource Include="Source\Image\lc_graphicfilterrelief.png" />
+    <Resource Include="Source\Image\lc_graphicfilterremovenoise.png" />
+    <Resource Include="Source\Image\lc_graphicfiltersepia.png" />
+    <Resource Include="Source\Image\lc_graphicfiltersharpen.png" />
+    <Resource Include="Source\Image\lc_graphicfiltersmooth.png" />
+    <Resource Include="Source\Image\lc_graphicfiltersobel.png" />
+    <Resource Include="Source\Image\lc_graphicfiltersolarize.png" />
+    <Resource Include="Source\Image\lc_greatestheight.png" />
+    <Resource Include="Source\Image\lc_greatestwidth.png" />
+    <Resource Include="Source\Image\lc_griduse.png" />
+    <Resource Include="Source\Image\lc_gridvisible.png" />
+    <Resource Include="Source\Image\lc_group.png" />
+    <Resource Include="Source\Image\lc_groupbox.png" />
+    <Resource Include="Source\Image\lc_grow.png" />
+    <Resource Include="Source\Image\lc_halfsphere.png" />
+    <Resource Include="Source\Image\lc_handoutmode.png" />
+    <Resource Include="Source\Image\lc_hangingindent.png" />
+    <Resource Include="Source\Image\lc_heading1parastyle.png" />
+    <Resource Include="Source\Image\lc_heading2parastyle.png" />
+    <Resource Include="Source\Image\lc_heading3parastyle.png" />
+    <Resource Include="Source\Image\lc_heading4parastyle.png" />
+    <Resource Include="Source\Image\lc_heading5parastyle.png" />
+    <Resource Include="Source\Image\lc_heading6parastyle.png" />
+    <Resource Include="Source\Image\lc_helpindex.png" />
+    <Resource Include="Source\Image\lc_helplinesmove.png" />
+    <Resource Include="Source\Image\lc_helplinesuse.png" />
+    <Resource Include="Source\Image\lc_helplinesvisible.png" />
+    <Resource Include="Source\Image\lc_hideallnotes.png" />
+    <Resource Include="Source\Image\lc_hidedetail.png" />
+    <Resource Include="Source\Image\lc_hidenote.png" />
+    <Resource Include="Source\Image\lc_hideslide.png" />
+    <Resource Include="Source\Image\lc_hidewhitespace.png" />
+    <Resource Include="Source\Image\lc_hyphenate.png" />
+    <Resource Include="Source\Image\lc_iconsetformatdialog.png" />
+    <Resource Include="Source\Image\lc_imagebutton.png" />
+    <Resource Include="Source\Image\lc_imagecontrol.png" />
+    <Resource Include="Source\Image\lc_imagemapdialog.png" />
+    <Resource Include="Source\Image\lc_importdialog.png" />
+    <Resource Include="Source\Image\lc_incrementindent.png" />
+    <Resource Include="Source\Image\lc_incrementsublevels.png" />
+    <Resource Include="Source\Image\lc_insertauthoritiesentry.png" />
+    <Resource Include="Source\Image\lc_insertbookmark.png" />
+    <Resource Include="Source\Image\lc_insertbreak.png" />
+    <Resource Include="Source\Image\lc_insertcaptiondialog.png" />
+    <Resource Include="Source\Image\lc_insertcellsdown.png" />
+    <Resource Include="Source\Image\lc_insertcellsright.png" />
+    <Resource Include="Source\Image\lc_insertcolumnbreak.png" />
+    <Resource Include="Source\Image\lc_insertcolumns.png" />
+    <Resource Include="Source\Image\lc_insertcolumnsafter.png" />
+    <Resource Include="Source\Image\lc_insertcolumnsbefore.png" />
+    <Resource Include="Source\Image\lc_insertdraw.png" />
+    <Resource Include="Source\Image\lc_insertendnote.png" />
+    <Resource Include="Source\Image\lc_insertenvelope.png" />
+    <Resource Include="Source\Image\lc_insertexternaldatasource.png" />
+    <Resource Include="Source\Image\lc_insertfieldctrl.png" />
+    <Resource Include="Source\Image\lc_insertfixedtext.png" />
+    <Resource Include="Source\Image\lc_insertfootnote.png" />
+    <Resource Include="Source\Image\lc_insertformhscroll.png" />
+    <Resource Include="Source\Image\lc_insertframe.png" />
+    <Resource Include="Source\Image\lc_insertgraphic.png" />
+    <Resource Include="Source\Image\lc_inserthyperlink.png" />
+    <Resource Include="Source\Image\lc_inserthyperlinkcontrol.png" />
+    <Resource Include="Source\Image\lc_insertindexesentry.png" />
+    <Resource Include="Source\Image\lc_insertlinebreak.png" />
+    <Resource Include="Source\Image\lc_insertmasterpage.png" />
+    <Resource Include="Source\Image\lc_insertmath.png" />
+    <Resource Include="Source\Image\lc_insertmenutitles.png" />
+    <Resource Include="Source\Image\lc_insertmultiindex.png" />
+    <Resource Include="Source\Image\lc_insertneutralparagraph.png" />
+    <Resource Include="Source\Image\lc_insertobject.png" />
+    <Resource Include="Source\Image\lc_insertobjectdialog.png" />
+    <Resource Include="Source\Image\lc_insertobjectfloatingframe.png" />
+    <Resource Include="Source\Image\lc_insertpage.png" />
+    <Resource Include="Source\Image\lc_insertpagebreak.png" />
+    <Resource Include="Source\Image\lc_insertpagecountfield.png" />
+    <Resource Include="Source\Image\lc_insertpagenumberfield.png" />
+    <Resource Include="Source\Image\lc_insertplugin.png" />
+    <Resource Include="Source\Image\lc_insertreferencefield.png" />
+    <Resource Include="Source\Image\lc_insertrows.png" />
+    <Resource Include="Source\Image\lc_insertrowsafter.png" />
+    <Resource Include="Source\Image\lc_insertrowsbefore.png" />
+    <Resource Include="Source\Image\lc_insertsection.png" />
+    <Resource Include="Source\Image\lc_insertsound.png" />
+    <Resource Include="Source\Image\lc_insertspreadsheet.png" />
+    <Resource Include="Source\Image\lc_insertsymbol.png" />
+    <Resource Include="Source\Image\lc_inserttable.png" />
+    <Resource Include="Source\Image\lc_inserttitlefield.png" />
+    <Resource Include="Source\Image\lc_inserttopicfield.png" />
+    <Resource Include="Source\Image\lc_inserttreecontrol.png" />
+    <Resource Include="Source\Image\lc_insertvideo.png" />
+    <Resource Include="Source\Image\lc_interactivegradient.png" />
+    <Resource Include="Source\Image\lc_interactivetransparence.png" />
+    <Resource Include="Source\Image\lc_intersect.png" />
+    <Resource Include="Source\Image\lc_italic.png" />
+    <Resource Include="Source\Image\lc_label.png" />
+    <Resource Include="Source\Image\lc_lastrecord.png" />
+    <Resource Include="Source\Image\lc_leavegroup.png" />
+    <Resource Include="Source\Image\lc_legend.png" />
+    <Resource Include="Source\Image\lc_line.png" />
+    <Resource Include="Source\Image\lc_linearrowcircle.png" />
+    <Resource Include="Source\Image\lc_linearrowend.png" />
+    <Resource Include="Source\Image\lc_linearrows.png" />
+    <Resource Include="Source\Image\lc_linearrowsquare.png" />
+    <Resource Include="Source\Image\lc_linearrowstart.png" />
+    <Resource Include="Source\Image\lc_linecirclearrow.png" />
+    <Resource Include="Source\Image\lc_lineendstyle.png" />
+    <Resource Include="Source\Image\lc_linenumberingdialog.png" />
+    <Resource Include="Source\Image\lc_linesquarearrow.png" />
+    <Resource Include="Source\Image\lc_linestyle.png" />
+    <Resource Include="Source\Image\lc_linewidth.png" />
+    <Resource Include="Source\Image\lc_line_diagonal.png" />
+    <Resource Include="Source\Image\lc_listbox.png" />
+    <Resource Include="Source\Image\lc_loadbasic.png" />
+    <Resource Include="Source\Image\lc_macrorecorder.png" />
+    <Resource Include="Source\Image\lc_mailmergecreatedocuments.png" />
+    <Resource Include="Source\Image\lc_mailmergeemaildocuments.png" />
+    <Resource Include="Source\Image\lc_mailmergeexcludeentry.png" />
+    <Resource Include="Source\Image\lc_mailmergeprintdocuments.png" />
+    <Resource Include="Source\Image\lc_mailmergesavedocuments.png" />
+    <Resource Include="Source\Image\lc_mailmergewizard.png" />
+    <Resource Include="Source\Image\lc_managebreakpoints.png" />
+    <Resource Include="Source\Image\lc_managelanguage.png" />
+    <Resource Include="Source\Image\lc_managexmlsource.png" />
+    <Resource Include="Source\Image\lc_marks.png" />
+    <Resource Include="Source\Image\lc_masterlayouts.png" />
+    <Resource Include="Source\Image\lc_masterpage.png" />
+    <Resource Include="Source\Image\lc_matchgroup.png" />
+    <Resource Include="Source\Image\lc_measureline.png" />
+    <Resource Include="Source\Image\lc_mediamute.png" />
+    <Resource Include="Source\Image\lc_mediapause.png" />
+    <Resource Include="Source\Image\lc_mediarepeat.png" />
+    <Resource Include="Source\Image\lc_menubar.png" />
+    <Resource Include="Source\Image\lc_merge.png" />
+    <Resource Include="Source\Image\lc_mergecells.png" />
+    <Resource Include="Source\Image\lc_mergedialog.png" />
+    <Resource Include="Source\Image\lc_mirror.png" />
+    <Resource Include="Source\Image\lc_mirrorvert.png" />
+    <Resource Include="Source\Image\lc_modifyframe.png" />
+    <Resource Include="Source\Image\lc_moduledialog.png" />
+    <Resource Include="Source\Image\lc_morecontrols.png" />
+    <Resource Include="Source\Image\lc_morphing.png" />
+    <Resource Include="Source\Image\lc_movedown.png" />
+    <Resource Include="Source\Image\lc_movedownsubitems.png" />
+    <Resource Include="Source\Image\lc_movepagefirst.png" />
+    <Resource Include="Source\Image\lc_movepagelast.png" />
+    <Resource Include="Source\Image\lc_moveup.png" />
+    <Resource Include="Source\Image\lc_moveupsubitems.png" />
+    <Resource Include="Source\Image\lc_name.png" />
+    <Resource Include="Source\Image\lc_navigationbar.png" />
+    <Resource Include="Source\Image\lc_navigator.png" />
+    <Resource Include="Source\Image\lc_newdoc.png" />
+    <Resource Include="Source\Image\lc_newwindow.png" />
+    <Resource Include="Source\Image\lc_nextannotation.png" />
+    <Resource Include="Source\Image\lc_nextrecord.png" />
+    <Resource Include="Source\Image\lc_normalmultipanegui.png" />
+    <Resource Include="Source\Image\lc_normalviewmode.png" />
+    <Resource Include="Source\Image\lc_notesmasterpage.png" />
+    <Resource Include="Source\Image\lc_notesmode.png" />
+    <Resource Include="Source\Image\lc_numberformatdate.png" />
+    <Resource Include="Source\Image\lc_numberformatdecdecimals.png" />
+    <Resource Include="Source\Image\lc_numberformatdecimal.png" />
+    <Resource Include="Source\Image\lc_numberformatincdecimals.png" />
+    <Resource Include="Source\Image\lc_numberformatpercent.png" />
+    <Resource Include="Source\Image\lc_numberformatscientific.png" />
+    <Resource Include="Source\Image\lc_numberformatstandard.png" />
+    <Resource Include="Source\Image\lc_numberformatthousands.png" />
+    <Resource Include="Source\Image\lc_numberingstart.png" />
+    <Resource Include="Source\Image\lc_numberliststyle.png" />
+    <Resource Include="Source\Image\lc_objectalignleft.png" />
+    <Resource Include="Source\Image\lc_objectalignright.png" />
+    <Resource Include="Source\Image\lc_objectbackone.png" />
+    <Resource Include="Source\Image\lc_objectcatalog.png" />
+    <Resource Include="Source\Image\lc_objectforwardone.png" />
+    <Resource Include="Source\Image\lc_objectposition.png" />
+    <Resource Include="Source\Image\lc_ok.png" />
+    <Resource Include="Source\Image\lc_open.png" />
+    <Resource Include="Source\Image\lc_openreadonly.png" />
+    <Resource Include="Source\Image\lc_openremote.png" />
+    <Resource Include="Source\Image\lc_optimizetable.png" />
+    <Resource Include="Source\Image\lc_orientation.png" />
+    <Resource Include="Source\Image\lc_outlinebullet.png" />
+    <Resource Include="Source\Image\lc_outlinecollapse.png" />
+    <Resource Include="Source\Image\lc_outlinecollapseall.png" />
+    <Resource Include="Source\Image\lc_outlineexpand.png" />
+    <Resource Include="Source\Image\lc_outlineexpandall.png" />
+    <Resource Include="Source\Image\lc_outlinefont.png" />
+    <Resource Include="Source\Image\lc_outlineformat.png" />
+    <Resource Include="Source\Image\lc_outlinemode.png" />
+    <Resource Include="Source\Image\lc_outputqualityblackwhite.png" />
+    <Resource Include="Source\Image\lc_outputqualitygrayscale.png" />
+    <Resource Include="Source\Image\lc_overline.png" />
+    <Resource Include="Source\Image\lc_pagebreakmode.png" />
+    <Resource Include="Source\Image\lc_pagecolumntype.png" />
+    <Resource Include="Source\Image\lc_pagedialog.png" />
+    <Resource Include="Source\Image\lc_pagemargin.png" />
+    <Resource Include="Source\Image\lc_pagemode.png" />
+    <Resource Include="Source\Image\lc_pagesetup.png" />
+    <Resource Include="Source\Image\lc_paragraphdialog.png" />
+    <Resource Include="Source\Image\lc_paralefttoright.png" />
+    <Resource Include="Source\Image\lc_pararighttoleft.png" />
+    <Resource Include="Source\Image\lc_paraspacedecrease.png" />
+    <Resource Include="Source\Image\lc_paraspaceincrease.png" />
+    <Resource Include="Source\Image\lc_paste.png" />
+    <Resource Include="Source\Image\lc_patternfield.png" />
+    <Resource Include="Source\Image\lc_photoalbumdialog.png" />
+    <Resource Include="Source\Image\lc_pickthrough.png" />
+    <Resource Include="Source\Image\lc_pie.png" />
+    <Resource Include="Source\Image\lc_pie_unfilled.png" />
+    <Resource Include="Source\Image\lc_polygon.png" />
+    <Resource Include="Source\Image\lc_polygon_diagonal.png" />
+    <Resource Include="Source\Image\lc_polygon_diagonal_unfilled.png" />
+    <Resource Include="Source\Image\lc_polygon_unfilled.png" />
+    <Resource Include="Source\Image\lc_preformattedparastyle.png" />
+    <Resource Include="Source\Image\lc_presentation.png" />
+    <Resource Include="Source\Image\lc_presentationcurrentslide.png" />
+    <Resource Include="Source\Image\lc_presentationdialog.png" />
+    <Resource Include="Source\Image\lc_presentationlayout.png" />
+    <Resource Include="Source\Image\lc_presentationminimizer.png" />
+    <Resource Include="Source\Image\lc_previousannotation.png" />
+    <Resource Include="Source\Image\lc_prevrecord.png" />
+    <Resource Include="Source\Image\lc_print.png" />
+    <Resource Include="Source\Image\lc_printdefault.png" />
+    <Resource Include="Source\Image\lc_printersetup.png" />
+    <Resource Include="Source\Image\lc_printpreview.png" />
+    <Resource Include="Source\Image\lc_progressbar.png" />
+    <Resource Include="Source\Image\lc_protect.png" />
+    <Resource Include="Source\Image\lc_pushbutton.png" />
+    <Resource Include="Source\Image\lc_quit.png" />
+    <Resource Include="Source\Image\lc_quotecharstyle.png" />
+    <Resource Include="Source\Image\lc_quoteparastyle.png" />
+    <Resource Include="Source\Image\lc_radiobutton.png" />
+    <Resource Include="Source\Image\lc_recentfilelist.png" />
+    <Resource Include="Source\Image\lc_recsearch.png" />
+    <Resource Include="Source\Image\lc_rect.png" />
+    <Resource Include="Source\Image\lc_rect_rounded.png" />
+    <Resource Include="Source\Image\lc_rect_rounded_unfilled.png" />
+    <Resource Include="Source\Image\lc_rect_unfilled.png" />
+    <Resource Include="Source\Image\lc_redactdoc.png" />
+    <Resource Include="Source\Image\lc_redactedexportblack.png" />
+    <Resource Include="Source\Image\lc_redactedexportwhite.png" />
+    <Resource Include="Source\Image\lc_redo.png" />
+    <Resource Include="Source\Image\lc_rejectalltrackedchanges.png" />
+    <Resource Include="Source\Image\lc_rejecttrackedchange.png" />
+    <Resource Include="Source\Image\lc_reload.png" />
+    <Resource Include="Source\Image\lc_removebullets.png" />
+    <Resource Include="Source\Image\lc_removefiltersort.png" />
+    <Resource Include="Source\Image\lc_removehyperlink.png" />
+    <Resource Include="Source\Image\lc_renameobject.png" />
+    <Resource Include="Source\Image\lc_renamepage.png" />
+    <Resource Include="Source\Image\lc_renameslide.png" />
+    <Resource Include="Source\Image\lc_renametable.png" />
+    <Resource Include="Source\Image\lc_repeat.png" />
+    <Resource Include="Source\Image\lc_replycomment.png" />
+    <Resource Include="Source\Image\lc_resetattributes.png" />
+    <Resource Include="Source\Image\lc_reverseorder.png" />
+    <Resource Include="Source\Image\lc_romanliststyle.png" />
+    <Resource Include="Source\Image\lc_romanlowliststyle.png" />
+    <Resource Include="Source\Image\lc_rotateleft.png" />
+    <Resource Include="Source\Image\lc_rotateright.png" />
+    <Resource Include="Source\Image\lc_ruler.png" />
+    <Resource Include="Source\Image\lc_runbasic.png" />
+    <Resource Include="Source\Image\lc_runmacro.png" />
+    <Resource Include="Source\Image\lc_save.png" />
+    <Resource Include="Source\Image\lc_saveas.png" />
+    <Resource Include="Source\Image\lc_saveasremote.png" />
+    <Resource Include="Source\Image\lc_saveastemplate.png" />
+    <Resource Include="Source\Image\lc_savebackground.png" />
+    <Resource Include="Source\Image\lc_sbaexecutesql.png" />
+    <Resource Include="Source\Image\lc_sbanativesql.png" />
+    <Resource Include="Source\Image\lc_scaletext.png" />
+    <Resource Include="Source\Image\lc_scriptorganizer.png" />
+    <Resource Include="Source\Image\lc_scrollbar.png" />
+    <Resource Include="Source\Image\lc_searchdialog.png" />
+    <Resource Include="Source\Image\lc_sectionshrink.png" />
+    <Resource Include="Source\Image\lc_sectionshrinkbottom.png" />
+    <Resource Include="Source\Image\lc_sectionshrinktop.png" />
+    <Resource Include="Source\Image\lc_selectall.png" />
+    <Resource Include="Source\Image\lc_selectbackground.png" />
+    <Resource Include="Source\Image\lc_selectdb.png" />
+    <Resource Include="Source\Image\lc_selectobject.png" />
+    <Resource Include="Source\Image\lc_selecttable.png" />
+    <Resource Include="Source\Image\lc_sendmail.png" />
+    <Resource Include="Source\Image\lc_sendtoback.png" />
+    <Resource Include="Source\Image\lc_setdocumentproperties.png" />
+    <Resource Include="Source\Image\lc_setminimalcolumnwidth.png" />
+    <Resource Include="Source\Image\lc_setminimalrowheight.png" />
+    <Resource Include="Source\Image\lc_setoptimalcolumnwidth.png" />
+    <Resource Include="Source\Image\lc_setoptimalrowheight.png" />
+    <Resource Include="Source\Image\lc_setoutline.png" />
+    <Resource Include="Source\Image\lc_shadowcursor.png" />
+    <Resource Include="Source\Image\lc_shadowed.png" />
+    <Resource Include="Source\Image\lc_sharedocument.png" />
+    <Resource Include="Source\Image\lc_shear.png" />
+    <Resource Include="Source\Image\lc_shell3d.png" />
+    <Resource Include="Source\Image\lc_showannotations.png" />
+    <Resource Include="Source\Image\lc_showbookview.png" />
+    <Resource Include="Source\Image\lc_showdatanavigator.png" />
+    <Resource Include="Source\Image\lc_showdependents.png" />
+    <Resource Include="Source\Image\lc_showdetail.png" />
+    <Resource Include="Source\Image\lc_showerrors.png" />
+    <Resource Include="Source\Image\lc_showfmexplorer.png" />
+    <Resource Include="Source\Image\lc_showinvalid.png" />
+    <Resource Include="Source\Image\lc_showmultiplepages.png" />
+    <Resource Include="Source\Image\lc_shownote.png" />
+    <Resource Include="Source\Image\lc_showprecedents.png" />
+    <Resource Include="Source\Image\lc_showsinglepage.png" />
+    <Resource Include="Source\Image\lc_showslide.png" />
+    <Resource Include="Source\Image\lc_showtwopages.png" />
+    <Resource Include="Source\Image\lc_shrink.png" />
+    <Resource Include="Source\Image\lc_sidebar.png" />
+    <Resource Include="Source\Image\lc_signature.png" />
+    <Resource Include="Source\Image\lc_signaturelinedialog.png" />
+    <Resource Include="Source\Image\lc_signpdf.png" />
+    <Resource Include="Source\Image\lc_slidemasterpage.png" />
+    <Resource Include="Source\Image\lc_smallcaps.png" />
+    <Resource Include="Source\Image\lc_smallestheight.png" />
+    <Resource Include="Source\Image\lc_smallestwidth.png" />
+    <Resource Include="Source\Image\lc_snapborder.png" />
+    <Resource Include="Source\Image\lc_snapframe.png" />
+    <Resource Include="Source\Image\lc_snappoints.png" />
+    <Resource Include="Source\Image\lc_solidcreate.png" />
+    <Resource Include="Source\Image\lc_solverdialog.png" />
+    <Resource Include="Source\Image\lc_sortascending.png" />
+    <Resource Include="Source\Image\lc_sortdescending.png" />
+    <Resource Include="Source\Image\lc_sourcecharstyle.png" />
+    <Resource Include="Source\Image\lc_spacepara1.png" />
+    <Resource Include="Source\Image\lc_spacepara15.png" />
+    <Resource Include="Source\Image\lc_spacepara2.png" />
+    <Resource Include="Source\Image\lc_spacing.png" />
+    <Resource Include="Source\Image\lc_spelling.png" />
+    <Resource Include="Source\Image\lc_spellonline.png" />
+    <Resource Include="Source\Image\lc_sphere.png" />
+    <Resource Include="Source\Image\lc_spinbutton.png" />
+    <Resource Include="Source\Image\lc_splitcell.png" />
+    <Resource Include="Source\Image\lc_splittable.png" />
+    <Resource Include="Source\Image\lc_splitwindow.png" />
+    <Resource Include="Source\Image\lc_square.png" />
+    <Resource Include="Source\Image\lc_square_rounded.png" />
+    <Resource Include="Source\Image\lc_square_rounded_unfilled.png" />
+    <Resource Include="Source\Image\lc_square_unfilled.png" />
+    <Resource Include="Source\Image\lc_starshapes.bang.png" />
+    <Resource Include="Source\Image\lc_starshapes.concave-star6.png" />
+    <Resource Include="Source\Image\lc_starshapes.doorplate.png" />
+    <Resource Include="Source\Image\lc_starshapes.horizontal-scroll.png" />
+    <Resource Include="Source\Image\lc_starshapes.png" />
+    <Resource Include="Source\Image\lc_starshapes.signet.png" />
+    <Resource Include="Source\Image\lc_starshapes.star12.png" />
+    <Resource Include="Source\Image\lc_starshapes.star24.png" />
+    <Resource Include="Source\Image\lc_starshapes.star4.png" />
+    <Resource Include="Source\Image\lc_starshapes.star5.png" />
+    <Resource Include="Source\Image\lc_starshapes.star6.png" />
+    <Resource Include="Source\Image\lc_starshapes.star8.png" />
+    <Resource Include="Source\Image\lc_starshapes.vertical-scroll.png" />
+    <Resource Include="Source\Image\lc_statisticsmenu.png" />
+    <Resource Include="Source\Image\lc_strikeout.png" />
+    <Resource Include="Source\Image\lc_strongemphasischarstyle.png" />
+    <Resource Include="Source\Image\lc_stylenewbyexample.png" />
+    <Resource Include="Source\Image\lc_styleupdatebyexample.png" />
+    <Resource Include="Source\Image\lc_subscript.png" />
+    <Resource Include="Source\Image\lc_substract.png" />
+    <Resource Include="Source\Image\lc_subtitleparastyle.png" />
+    <Resource Include="Source\Image\lc_superscript.png" />
+    <Resource Include="Source\Image\lc_switchcontroldesignmode.png" />
+    <Resource Include="Source\Image\lc_switchxformsdesignmode.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.brace-pair.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.bracket-pair.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.cloud.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.diamond-bevel.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.flower.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.forbidden.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.heart.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.left-brace.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.left-bracket.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.lightning.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.moon.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.octagon-bevel.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.puzzle.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.quad-bevel.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.right-brace.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.right-bracket.png" />
+    <Resource Include="Source\Image\lc_symbolshapes.sun.png" />
+    <Resource Include="Source\Image\lc_tabdialog.png" />
+    <Resource Include="Source\Image\lc_tabledesign.png" />
+    <Resource Include="Source\Image\lc_tabledialog.png" />
+    <Resource Include="Source\Image\lc_tablemodefix.png" />
+    <Resource Include="Source\Image\lc_tablemodefixprop.png" />
+    <Resource Include="Source\Image\lc_tablemodevariable.png" />
+    <Resource Include="Source\Image\lc_tablenumberformatdialog.png" />
+    <Resource Include="Source\Image\lc_testmode.png" />
+    <Resource Include="Source\Image\lc_text.png" />
+    <Resource Include="Source\Image\lc_textattributes.png" />
+    <Resource Include="Source\Image\lc_textbodyparastyle.png" />
+    <Resource Include="Source\Image\lc_textdirectionlefttoright.png" />
+    <Resource Include="Source\Image\lc_textdirectiontoptobottom.png" />
+    <Resource Include="Source\Image\lc_texttocolumns.png" />
+    <Resource Include="Source\Image\lc_text_marquee.png" />
+    <Resource Include="Source\Image\lc_thesaurus.png" />
+    <Resource Include="Source\Image\lc_thesaurusdialog.png" />
+    <Resource Include="Source\Image\lc_timefield.png" />
+    <Resource Include="Source\Image\lc_titlepagedialog.png" />
+    <Resource Include="Source\Image\lc_titleparastyle.png" />
+    <Resource Include="Source\Image\lc_toggleanchortype.png" />
+    <Resource Include="Source\Image\lc_toggleaxistitle.png" />
+    <Resource Include="Source\Image\lc_togglebreakpoint.png" />
+    <Resource Include="Source\Image\lc_toggleformula.png" />
+    <Resource Include="Source\Image\lc_togglegridhorizontal.png" />
+    <Resource Include="Source\Image\lc_togglegridvertical.png" />
+    <Resource Include="Source\Image\lc_togglelegend.png" />
+    <Resource Include="Source\Image\lc_toggleobjectbeziermode.png" />
+    <Resource Include="Source\Image\lc_toggleobjectrotatemode.png" />
+    <Resource Include="Source\Image\lc_togglesheetgrid.png" />
+    <Resource Include="Source\Image\lc_toggletabbarvisibility.png" />
+    <Resource Include="Source\Image\lc_toggletitle.png" />
+    <Resource Include="Source\Image\lc_toolbarmode.png" />
+    <Resource Include="Source\Image\lc_torus.png" />
+    <Resource Include="Source\Image\lc_trackchanges.png" />
+    <Resource Include="Source\Image\lc_trackchangesbar.png" />
+    <Resource Include="Source\Image\lc_transformdialog.png" />
+    <Resource Include="Source\Image\lc_underline.png" />
+    <Resource Include="Source\Image\lc_underlinedouble.png" />
+    <Resource Include="Source\Image\lc_undo.png" />
+    <Resource Include="Source\Image\lc_ungroup.png" />
+    <Resource Include="Source\Image\lc_unhainframes.png" />
+    <Resource Include="Source\Image\lc_unsetcellsreadonly.png" />
+    <Resource Include="Source\Image\lc_upsearch.png" />
+    <Resource Include="Source\Image\lc_validation.png" />
+    <Resource Include="Source\Image\lc_versiondialog.png" />
+    <Resource Include="Source\Image\lc_verticalcaption.png" />
+    <Resource Include="Source\Image\lc_verticaltext.png" />
+    <Resource Include="Source\Image\lc_verticaltextfittosizetool.png" />
+    <Resource Include="Source\Image\lc_vfixedline.png" />
+    <Resource Include="Source\Image\lc_view100.png" />
+    <Resource Include="Source\Image\lc_viewdatasourcebrowser.png" />
+    <Resource Include="Source\Image\lc_viewformasgrid.png" />
+    <Resource Include="Source\Image\lc_viewrowcolumnheaders.png" />
+    <Resource Include="Source\Image\lc_viewvaluehighlighting.png" />
+    <Resource Include="Source\Image\lc_watermark.png" />
+    <Resource Include="Source\Image\lc_window3d.png" />
+    <Resource Include="Source\Image\lc_wordcountdialog.png" />
+    <Resource Include="Source\Image\lc_wrapcontour.png" />
+    <Resource Include="Source\Image\lc_wrapideal.png" />
+    <Resource Include="Source\Image\lc_wrapleft.png" />
+    <Resource Include="Source\Image\lc_wrapoff.png" />
+    <Resource Include="Source\Image\lc_wrapon.png" />
+    <Resource Include="Source\Image\lc_wrapright.png" />
+    <Resource Include="Source\Image\lc_wraptext.png" />
+    <Resource Include="Source\Image\lc_wrapthrough.png" />
+    <Resource Include="Source\Image\lc_xlinecolor.png" />
+    <Resource Include="Source\Image\lc_zoomin.png" />
+    <Resource Include="Source\Image\lc_zoomnext.png" />
+    <Resource Include="Source\Image\lc_zoomobjects.png" />
+    <Resource Include="Source\Image\lc_zoomoptimal.png" />
+    <Resource Include="Source\Image\lc_zoomout.png" />
+    <Resource Include="Source\Image\lc_zoompage.png" />
+    <Resource Include="Source\Image\lc_zoompagewidth.png" />
+    <Resource Include="Source\Image\lc_zoompanning.png" />
+    <Resource Include="Source\Image\lc_zoomprevious.png" />
+    <Resource Include="Source\Image\sc_accent1cellstyles.png" />
+    <Resource Include="Source\Image\sc_accent2cellstyles.png" />
+    <Resource Include="Source\Image\sc_accent3cellstyles.png" />
+    <Resource Include="Source\Image\sc_acceptalltrackedchanges.png" />
+    <Resource Include="Source\Image\sc_accepttrackedchange.png" />
+    <Resource Include="Source\Image\sc_accepttrackedchanges.png" />
+    <Resource Include="Source\Image\sc_actionmode.png" />
+    <Resource Include="Source\Image\sc_add.png" />
+    <Resource Include="Source\Image\sc_adddirect.png" />
+    <Resource Include="Source\Image\sc_addfield.png" />
+    <Resource Include="Source\Image\sc_addressbooksource.png" />
+    <Resource Include="Source\Image\sc_addwatch.png" />
+    <Resource Include="Source\Image\sc_advancedmode.png" />
+    <Resource Include="Source\Image\sc_alignblock.png" />
+    <Resource Include="Source\Image\sc_alignbottom.png" />
+    <Resource Include="Source\Image\sc_aligncenter.png" />
+    <Resource Include="Source\Image\sc_aligndown.png" />
+    <Resource Include="Source\Image\sc_alignhorizontalcenter.png" />
+    <Resource Include="Source\Image\sc_alignleft.png" />
+    <Resource Include="Source\Image\sc_alignmiddle.png" />
+    <Resource Include="Source\Image\sc_alignright.png" />
+    <Resource Include="Source\Image\sc_aligntop.png" />
+    <Resource Include="Source\Image\sc_alignup.png" />
+    <Resource Include="Source\Image\sc_alignverticalcenter.png" />
+    <Resource Include="Source\Image\sc_alphaliststyle.png" />
+    <Resource Include="Source\Image\sc_alphalowliststyle.png" />
+    <Resource Include="Source\Image\sc_anchormenu.png" />
+    <Resource Include="Source\Image\sc_animationeffects.png" />
+    <Resource Include="Source\Image\sc_animationmode.png" />
+    <Resource Include="Source\Image\sc_animationobjects.png" />
+    <Resource Include="Source\Image\sc_arc.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.chevron.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.circular-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.corner-right-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.down-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.down-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.left-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.left-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.left-right-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.notched-right-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.pentagon-right.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.quad-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.quad-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.right-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.right-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.s-sharped-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.split-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.split-round-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.striped-right-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-down-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-down-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-right-arrow-callout.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-right-arrow.png" />
+    <Resource Include="Source\Image\sc_arrowshapes.up-right-down-arrow.png" />
+    <Resource Include="Source\Image\sc_assignlayout.png" />
+    <Resource Include="Source\Image\sc_auditingfillmode.png" />
+    <Resource Include="Source\Image\sc_autocontrolfocus.png" />
+    <Resource Include="Source\Image\sc_autocorrectdlg.png" />
+    <Resource Include="Source\Image\sc_autoformat.png" />
+    <Resource Include="Source\Image\sc_autooutline.png" />
+    <Resource Include="Source\Image\sc_autopilotmenu.png" />
+    <Resource Include="Source\Image\sc_autosum.png" />
+    <Resource Include="Source\Image\sc_avmediaplayer.png" />
+    <Resource Include="Source\Image\sc_backcolor.png" />
+    <Resource Include="Source\Image\sc_backgroundcolor.png" />
+    <Resource Include="Source\Image\sc_backward.png" />
+    <Resource Include="Source\Image\sc_badcellstyle.png" />
+    <Resource Include="Source\Image\sc_basicideappear.png" />
+    <Resource Include="Source\Image\sc_basicshapes.block-arc.png" />
+    <Resource Include="Source\Image\sc_basicshapes.can.png" />
+    <Resource Include="Source\Image\sc_basicshapes.cross.png" />
+    <Resource Include="Source\Image\sc_basicshapes.cube.png" />
+    <Resource Include="Source\Image\sc_basicshapes.diamond.png" />
+    <Resource Include="Source\Image\sc_basicshapes.hexagon.png" />
+    <Resource Include="Source\Image\sc_basicshapes.isosceles-triangle.png" />
+    <Resource Include="Source\Image\sc_basicshapes.octagon.png" />
+    <Resource Include="Source\Image\sc_basicshapes.paper.png" />
+    <Resource Include="Source\Image\sc_basicshapes.pentagon.png" />
+    <Resource Include="Source\Image\sc_basicshapes.right-triangle.png" />
+    <Resource Include="Source\Image\sc_basicshapes.ring.png" />
+    <Resource Include="Source\Image\sc_basicshapes.round-quadrat.png" />
+    <Resource Include="Source\Image\sc_basicshapes.trapezoid.png" />
+    <Resource Include="Source\Image\sc_basicstepinto.png" />
+    <Resource Include="Source\Image\sc_basicstepout.png" />
+    <Resource Include="Source\Image\sc_basicstepover.png" />
+    <Resource Include="Source\Image\sc_basicstop.png" />
+    <Resource Include="Source\Image\sc_beforeobject.png" />
+    <Resource Include="Source\Image\sc_behindobject.png" />
+    <Resource Include="Source\Image\sc_bezierappend.png" />
+    <Resource Include="Source\Image\sc_bezierclose.png" />
+    <Resource Include="Source\Image\sc_bezierconvert.png" />
+    <Resource Include="Source\Image\sc_beziercutline.png" />
+    <Resource Include="Source\Image\sc_bezierdelete.png" />
+    <Resource Include="Source\Image\sc_beziereliminatepoints.png" />
+    <Resource Include="Source\Image\sc_bezierfill.png" />
+    <Resource Include="Source\Image\sc_bezierinsert.png" />
+    <Resource Include="Source\Image\sc_beziermove.png" />
+    <Resource Include="Source\Image\sc_beziersmooth.png" />
+    <Resource Include="Source\Image\sc_beziersymmetric.png" />
+    <Resource Include="Source\Image\sc_bezier_unfilled.png" />
+    <Resource Include="Source\Image\sc_bibliographycomponent.png" />
+    <Resource Include="Source\Image\sc_bmpmask.png" />
+    <Resource Include="Source\Image\sc_bold.png" />
+    <Resource Include="Source\Image\sc_borderdialog.png" />
+    <Resource Include="Source\Image\sc_break.png" />
+    <Resource Include="Source\Image\sc_bringtofront.png" />
+    <Resource Include="Source\Image\sc_browseview.png" />
+    <Resource Include="Source\Image\sc_bullet.png" />
+    <Resource Include="Source\Image\sc_bulletsandnumberingdialog.png" />
+    <Resource Include="Source\Image\sc_calculate.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.cloud-callout.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.line-callout-1.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.line-callout-2.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.line-callout-3.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.rectangular-callout.png" />
+    <Resource Include="Source\Image\sc_calloutshapes.round-callout.png" />
+    <Resource Include="Source\Image\sc_cancel.png" />
+    <Resource Include="Source\Image\sc_capturepoint.png" />
+    <Resource Include="Source\Image\sc_chainframes.png" />
+    <Resource Include="Source\Image\sc_changebezier.png" />
+    <Resource Include="Source\Image\sc_changecasetolower.png" />
+    <Resource Include="Source\Image\sc_changecasetoupper.png" />
+    <Resource Include="Source\Image\sc_changedatabasefield.png" />
+    <Resource Include="Source\Image\sc_changepicture.png" />
+    <Resource Include="Source\Image\sc_changepolygon.png" />
+    <Resource Include="Source\Image\sc_charfontname.png" />
+    <Resource Include="Source\Image\sc_charmapcontrol.png" />
+    <Resource Include="Source\Image\sc_checkbox.png" />
+    <Resource Include="Source\Image\sc_choosecontrols.png" />
+    <Resource Include="Source\Image\sc_choosedesign.png" />
+    <Resource Include="Source\Image\sc_choosemacro.png" />
+    <Resource Include="Source\Image\sc_choosepolygon.png" />
+    <Resource Include="Source\Image\sc_circle.png" />
+    <Resource Include="Source\Image\sc_circlearc.png" />
+    <Resource Include="Source\Image\sc_circlecut.png" />
+    <Resource Include="Source\Image\sc_circlecut_unfilled.png" />
+    <Resource Include="Source\Image\sc_circlepie.png" />
+    <Resource Include="Source\Image\sc_circlepie_unfilled.png" />
+    <Resource Include="Source\Image\sc_circle_unfilled.png" />
+    <Resource Include="Source\Image\sc_cleararrowdependents.png" />
+    <Resource Include="Source\Image\sc_cleararrowprecedents.png" />
+    <Resource Include="Source\Image\sc_cleararrows.png" />
+    <Resource Include="Source\Image\sc_closedoc.png" />
+    <Resource Include="Source\Image\sc_closemasterview.png" />
+    <Resource Include="Source\Image\sc_color.png" />
+    <Resource Include="Source\Image\sc_colorscaleformatdialog.png" />
+    <Resource Include="Source\Image\sc_combine.png" />
+    <Resource Include="Source\Image\sc_combobox.png" />
+    <Resource Include="Source\Image\sc_commentchangetracking.png" />
+    <Resource Include="Source\Image\sc_comparedocuments.png" />
+    <Resource Include="Source\Image\sc_compilebasic.png" />
+    <Resource Include="Source\Image\sc_compressgraphic.png" />
+    <Resource Include="Source\Image\sc_conddateformatdialog.png" />
+    <Resource Include="Source\Image\sc_conditionalformatdialog.png" />
+    <Resource Include="Source\Image\sc_cone.png" />
+    <Resource Include="Source\Image\sc_config.png" />
+    <Resource Include="Source\Image\sc_configuredialog.png" />
+    <Resource Include="Source\Image\sc_connect.png" />
+    <Resource Include="Source\Image\sc_connector.png" />
+    <Resource Include="Source\Image\sc_connectorarrowend.png" />
+    <Resource Include="Source\Image\sc_connectorarrows.png" />
+    <Resource Include="Source\Image\sc_connectorarrowstart.png" />
+    <Resource Include="Source\Image\sc_connectorcircleend.png" />
+    <Resource Include="Source\Image\sc_connectorcirclestart.png" />
+    <Resource Include="Source\Image\sc_connectorcurve.png" />
+    <Resource Include="Source\Image\sc_connectorcurvearrowend.png" />
+    <Resource Include="Source\Image\sc_connectorcurvearrows.png" />
+    <Resource Include="Source\Image\sc_connectorcurvearrowstart.png" />
+    <Resource Include="Source\Image\sc_connectorcurvecircleend.png" />
+    <Resource Include="Source\Image\sc_connectorcurvecirclestart.png" />
+    <Resource Include="Source\Image\sc_connectorline.png" />
+    <Resource Include="Source\Image\sc_connectorlinearrowend.png" />
+    <Resource Include="Source\Image\sc_connectorlinearrows.png" />
+    <Resource Include="Source\Image\sc_connectorlinearrowstart.png" />
+    <Resource Include="Source\Image\sc_connectorlinecircleend.png" />
+    <Resource Include="Source\Image\sc_connectorlinecirclestart.png" />
+    <Resource Include="Source\Image\sc_connectorlines.png" />
+    <Resource Include="Source\Image\sc_connectorlinesarrowend.png" />
+    <Resource Include="Source\Image\sc_connectorlinesarrows.png" />
+    <Resource Include="Source\Image\sc_connectorlinesarrowstart.png" />
+    <Resource Include="Source\Image\sc_connectorlinescircleend.png" />
+    <Resource Include="Source\Image\sc_connectorlinescirclestart.png" />
+    <Resource Include="Source\Image\sc_controlcodes.png" />
+    <Resource Include="Source\Image\sc_controlproperties.png" />
+    <Resource Include="Source\Image\sc_convertinto3d.png" />
+    <Resource Include="Source\Image\sc_convertinto3dlathe.png" />
+    <Resource Include="Source\Image\sc_copy.png" />
+    <Resource Include="Source\Image\sc_copyobjects.png" />
+    <Resource Include="Source\Image\sc_crookrotate.png" />
+    <Resource Include="Source\Image\sc_crookslant.png" />
+    <Resource Include="Source\Image\sc_crop.png" />
+    <Resource Include="Source\Image\sc_cube.png" />
+    <Resource Include="Source\Image\sc_currencyfield.png" />
+    <Resource Include="Source\Image\sc_customshowdialog.png" />
+    <Resource Include="Source\Image\sc_cut.png" />
+    <Resource Include="Source\Image\sc_cylinder.png" />
+    <Resource Include="Source\Image\sc_cyramid.png" />
+    <Resource Include="Source\Image\sc_dataarearefresh.png" />
+    <Resource Include="Source\Image\sc_databarformatdialog.png" />
+    <Resource Include="Source\Image\sc_dataconsolidate.png" />
+    <Resource Include="Source\Image\sc_datadatapilotrun.png" />
+    <Resource Include="Source\Image\sc_datafilterautofilter.png" />
+    <Resource Include="Source\Image\sc_datafilterspecialfilter.png" />
+    <Resource Include="Source\Image\sc_datafilterstandardfilter.png" />
+    <Resource Include="Source\Image\sc_dataimport.png" />
+    <Resource Include="Source\Image\sc_dataincolumns.png" />
+    <Resource Include="Source\Image\sc_datainrows.png" />
+    <Resource Include="Source\Image\sc_dataprovider.png" />
+    <Resource Include="Source\Image\sc_dataranges.png" />
+    <Resource Include="Source\Image\sc_datasort.png" />
+    <Resource Include="Source\Image\sc_datastreams.png" />
+    <Resource Include="Source\Image\sc_datasubtotals.png" />
+    <Resource Include="Source\Image\sc_datefield.png" />
+    <Resource Include="Source\Image\sc_dbaddrelation.png" />
+    <Resource Include="Source\Image\sc_dbchangedesignmode.png" />
+    <Resource Include="Source\Image\sc_dbclearquery.png" />
+    <Resource Include="Source\Image\sc_dbdistinctvalues.png" />
+    <Resource Include="Source\Image\sc_dbformdelete.png" />
+    <Resource Include="Source\Image\sc_dbformedit.png" />
+    <Resource Include="Source\Image\sc_dbformrename.png" />
+    <Resource Include="Source\Image\sc_dbindexdesign.png" />
+    <Resource Include="Source\Image\sc_dbnewform.png" />
+    <Resource Include="Source\Image\sc_dbnewquery.png" />
+    <Resource Include="Source\Image\sc_dbnewreport.png" />
+    <Resource Include="Source\Image\sc_dbnewtable.png" />
+    <Resource Include="Source\Image\sc_dbnewviewsql.png" />
+    <Resource Include="Source\Image\sc_dbquerydelete.png" />
+    <Resource Include="Source\Image\sc_dbqueryedit.png" />
+    <Resource Include="Source\Image\sc_dbquerypropertiesdialog.png" />
+    <Resource Include="Source\Image\sc_dbqueryrename.png" />
+    <Resource Include="Source\Image\sc_dbreportdelete.png" />
+    <Resource Include="Source\Image\sc_dbreportedit.png" />
+    <Resource Include="Source\Image\sc_dbreportrename.png" />
+    <Resource Include="Source\Image\sc_dbsortingandgrouping.png" />
+    <Resource Include="Source\Image\sc_dbtabledelete.png" />
+    <Resource Include="Source\Image\sc_dbtableedit.png" />
+    <Resource Include="Source\Image\sc_dbtablerename.png" />
+    <Resource Include="Source\Image\sc_dbviewaliases.png" />
+    <Resource Include="Source\Image\sc_dbviewforms.png" />
+    <Resource Include="Source\Image\sc_dbviewfunctions.png" />
+    <Resource Include="Source\Image\sc_dbviewqueries.png" />
+    <Resource Include="Source\Image\sc_dbviewreports.png" />
+    <Resource Include="Source\Image\sc_dbviewtablenames.png" />
+    <Resource Include="Source\Image\sc_dbviewtables.png" />
+    <Resource Include="Source\Image\sc_decrementindent.png" />
+    <Resource Include="Source\Image\sc_decrementlevel.png" />
+    <Resource Include="Source\Image\sc_decrementsublevels.png" />
+    <Resource Include="Source\Image\sc_defaultbullet.png" />
+    <Resource Include="Source\Image\sc_defaultcharstyle.png" />
+    <Resource Include="Source\Image\sc_defaultnumbering.png" />
+    <Resource Include="Source\Image\sc_definedbname.png" />
+    <Resource Include="Source\Image\sc_definename.png" />
+    <Resource Include="Source\Image\sc_defineprintarea.png" />
+    <Resource Include="Source\Image\sc_delete.png" />
+    <Resource Include="Source\Image\sc_deleteallannotation.png" />
+    <Resource Include="Source\Image\sc_deleteallbreaks.png" />
+    <Resource Include="Source\Image\sc_deleteannotation.png" />
+    <Resource Include="Source\Image\sc_deletecell.png" />
+    <Resource Include="Source\Image\sc_deletecolumns.png" />
+    <Resource Include="Source\Image\sc_deletecomment.png" />
+    <Resource Include="Source\Image\sc_deletemasterpage.png" />
+    <Resource Include="Source\Image\sc_deletepage.png" />
+    <Resource Include="Source\Image\sc_deleterows.png" />
+    <Resource Include="Source\Image\sc_deletetable.png" />
+    <Resource Include="Source\Image\sc_designerdialog.png" />
+    <Resource Include="Source\Image\sc_dia.png" />
+    <Resource Include="Source\Image\sc_diaeffect.png" />
+    <Resource Include="Source\Image\sc_diagramarea.png" />
+    <Resource Include="Source\Image\sc_diagramaxis.png" />
+    <Resource Include="Source\Image\sc_diagramaxisx.png" />
+    <Resource Include="Source\Image\sc_diagramaxisxyz.png" />
+    <Resource Include="Source\Image\sc_diagramaxisy.png" />
+    <Resource Include="Source\Image\sc_diagramaxisz.png" />
+    <Resource Include="Source\Image\sc_diagramtype.png" />
+    <Resource Include="Source\Image\sc_diagramwall.png" />
+    <Resource Include="Source\Image\sc_diamode.png" />
+    <Resource Include="Source\Image\sc_diaspeed.png" />
+    <Resource Include="Source\Image\sc_diatime.png" />
+    <Resource Include="Source\Image\sc_dismantle.png" />
+    <Resource Include="Source\Image\sc_displaymasterbackground.png" />
+    <Resource Include="Source\Image\sc_displaymasterobjects.png" />
+    <Resource Include="Source\Image\sc_displaymode.png" />
+    <Resource Include="Source\Image\sc_distributecolumns.png" />
+    <Resource Include="Source\Image\sc_distributerows.png" />
+    <Resource Include="Source\Image\sc_distributeselection.png" />
+    <Resource Include="Source\Image\sc_downsearch.png" />
+    <Resource Include="Source\Image\sc_drawcaption.png" />
+    <Resource Include="Source\Image\sc_drawchart.png" />
+    <Resource Include="Source\Image\sc_dsbformletter.png" />
+    <Resource Include="Source\Image\sc_dsbinsertcontent.png" />
+    <Resource Include="Source\Image\sc_duplicatepage.png" />
+    <Resource Include="Source\Image\sc_edit.png" />
+    <Resource Include="Source\Image\sc_editannotation.png" />
+    <Resource Include="Source\Image\sc_editdoc.png" />
+    <Resource Include="Source\Image\sc_editglossary.png" />
+    <Resource Include="Source\Image\sc_editheaderandfooter.png" />
+    <Resource Include="Source\Image\sc_editstyle.png" />
+    <Resource Include="Source\Image\sc_ellipse.png" />
+    <Resource Include="Source\Image\sc_ellipsecut.png" />
+    <Resource Include="Source\Image\sc_ellipsecut_unfilled.png" />
+    <Resource Include="Source\Image\sc_ellipse_unfilled.png" />
+    <Resource Include="Source\Image\sc_emphasischarstyle.png" />
+    <Resource Include="Source\Image\sc_entergroup.png" />
+    <Resource Include="Source\Image\sc_entirecell.png" />
+    <Resource Include="Source\Image\sc_entirecolumn.png" />
+    <Resource Include="Source\Image\sc_entirerow.png" />
+    <Resource Include="Source\Image\sc_equalizeheight.png" />
+    <Resource Include="Source\Image\sc_equalizewidth.png" />
+    <Resource Include="Source\Image\sc_errorcellstyles.png" />
+    <Resource Include="Source\Image\sc_euroconverter.png" />
+    <Resource Include="Source\Image\sc_executereport.png" />
+    <Resource Include="Source\Image\sc_expandpage.png" />
+    <Resource Include="Source\Image\sc_exportdialog.png" />
+    <Resource Include="Source\Image\sc_exportdirecttoepub.png" />
+    <Resource Include="Source\Image\sc_exportdirecttopdf.png" />
+    <Resource Include="Source\Image\sc_exportto.png" />
+    <Resource Include="Source\Image\sc_extendedhelp.png" />
+    <Resource Include="Source\Image\sc_extrusion3dcolor.png" />
+    <Resource Include="Source\Image\sc_extrusiondepthfloater.png" />
+    <Resource Include="Source\Image\sc_extrusiondirectionfloater.png" />
+    <Resource Include="Source\Image\sc_extrusionlightingfloater.png" />
+    <Resource Include="Source\Image\sc_extrusionsurfacefloater.png" />
+    <Resource Include="Source\Image\sc_extrusiontiltdown.png" />
+    <Resource Include="Source\Image\sc_extrusiontiltleft.png" />
+    <Resource Include="Source\Image\sc_extrusiontiltright.png" />
+    <Resource Include="Source\Image\sc_extrusiontiltup.png" />
+    <Resource Include="Source\Image\sc_extrusiontoggle.png" />
+    <Resource Include="Source\Image\sc_fields.png" />
+    <Resource Include="Source\Image\sc_filecontrol.png" />
+    <Resource Include="Source\Image\sc_filefield.png" />
+    <Resource Include="Source\Image\sc_fillshadow.png" />
+    <Resource Include="Source\Image\sc_firstpage.png" />
+    <Resource Include="Source\Image\sc_firstrecord.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-card.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-collate.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-data.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-decision.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-delay.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-direct-access-storage.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-display.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-document.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-internal-storage.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-manual-input.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-multidocument.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-off-page-connector.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-or.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-predefined-process.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-preparation.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-punched-tape.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-sequential-access.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-sort.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-stored-data.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-summing-junction.png" />
+    <Resource Include="Source\Image\sc_flowchartshapes.flowchart-terminator.png" />
+    <Resource Include="Source\Image\sc_fontdialog.png" />
+    <Resource Include="Source\Image\sc_fontwork.png" />
+    <Resource Include="Source\Image\sc_fontworkgalleryfloater.png" />
+    <Resource Include="Source\Image\sc_fontworksameletterheights.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-down-curve.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-down-pour.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-left-curve.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-left-pour.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-right-curve.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-right-pour.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-up-curve.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-arch-up-pour.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-chevron-down.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-chevron-up.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-circle-curve.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-curve-down.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-curve-up.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-fade-left.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-fade-right.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-fade-up-and-left.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-fade-up-and-right.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-fade-up.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-inflate.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-open-circle-curve.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-open-circle-pour.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-plain-text.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-slant-down.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-slant-up.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-stop.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-triangle-down.png" />
+    <Resource Include="Source\Image\sc_fontworkshapetype.fontwork-wave.png" />
+    <Resource Include="Source\Image\sc_footnotedialog.png" />
+    <Resource Include="Source\Image\sc_formatarea.png" />
+    <Resource Include="Source\Image\sc_formatcelldialog.png" />
+    <Resource Include="Source\Image\sc_formatcolumns.png" />
+    <Resource Include="Source\Image\sc_formatgroup.png" />
+    <Resource Include="Source\Image\sc_formatline.png" />
+    <Resource Include="Source\Image\sc_formatpaintbrush.png" />
+    <Resource Include="Source\Image\sc_formattedfield.png" />
+    <Resource Include="Source\Image\sc_formatungroup.png" />
+    <Resource Include="Source\Image\sc_formdesigntools.png" />
+    <Resource Include="Source\Image\sc_formelcursor.png" />
+    <Resource Include="Source\Image\sc_formfiltered.png" />
+    <Resource Include="Source\Image\sc_formfilternavigator.png" />
+    <Resource Include="Source\Image\sc_formproperties.png" />
+    <Resource Include="Source\Image\sc_forward.png" />
+    <Resource Include="Source\Image\sc_framedialog.png" />
+    <Resource Include="Source\Image\sc_framelinecolor.png" />
+    <Resource Include="Source\Image\sc_freeline.png" />
+    <Resource Include="Source\Image\sc_freeline_unfilled.png" />
+    <Resource Include="Source\Image\sc_freezepanes.png" />
+    <Resource Include="Source\Image\sc_freezepanesfirstcolumn.png" />
+    <Resource Include="Source\Image\sc_freezepanesfirstrow.png" />
+    <Resource Include="Source\Image\sc_fullscreen.png" />
+    <Resource Include="Source\Image\sc_gallery.png" />
+    <Resource Include="Source\Image\sc_glueeditmode.png" />
+    <Resource Include="Source\Image\sc_glueescapedirectionbottom.png" />
+    <Resource Include="Source\Image\sc_glueescapedirectionleft.png" />
+    <Resource Include="Source\Image\sc_glueescapedirectionright.png" />
+    <Resource Include="Source\Image\sc_glueescapedirectiontop.png" />
+    <Resource Include="Source\Image\sc_gluehorzaligncenter.png" />
+    <Resource Include="Source\Image\sc_gluehorzalignleft.png" />
+    <Resource Include="Source\Image\sc_gluehorzalignright.png" />
+    <Resource Include="Source\Image\sc_glueinsertpoint.png" />
+    <Resource Include="Source\Image\sc_gluepercent.png" />
+    <Resource Include="Source\Image\sc_gluevertalignbottom.png" />
+    <Resource Include="Source\Image\sc_gluevertaligncenter.png" />
+    <Resource Include="Source\Image\sc_gluevertaligntop.png" />
+    <Resource Include="Source\Image\sc_goalseekdialog.png" />
+    <Resource Include="Source\Image\sc_goodcellstyle.png" />
+    <Resource Include="Source\Image\sc_gotopage.png" />
+    <Resource Include="Source\Image\sc_grafattrcrop.png" />
+    <Resource Include="Source\Image\sc_grafblue.png" />
+    <Resource Include="Source\Image\sc_grafcontrast.png" />
+    <Resource Include="Source\Image\sc_grafgreen.png" />
+    <Resource Include="Source\Image\sc_grafluminance.png" />
+    <Resource Include="Source\Image\sc_grafred.png" />
+    <Resource Include="Source\Image\sc_graftransparence.png" />
+    <Resource Include="Source\Image\sc_graphic.png" />
+    <Resource Include="Source\Image\sc_graphicdialog.png" />
+    <Resource Include="Source\Image\sc_graphicfilterinvert.png" />
+    <Resource Include="Source\Image\sc_graphicfiltermosaic.png" />
+    <Resource Include="Source\Image\sc_graphicfilterpopart.png" />
+    <Resource Include="Source\Image\sc_graphicfilterrelief.png" />
+    <Resource Include="Source\Image\sc_graphicfilterremovenoise.png" />
+    <Resource Include="Source\Image\sc_graphicfiltersepia.png" />
+    <Resource Include="Source\Image\sc_graphicfiltersharpen.png" />
+    <Resource Include="Source\Image\sc_graphicfiltersmooth.png" />
+    <Resource Include="Source\Image\sc_graphicfiltersobel.png" />
+    <Resource Include="Source\Image\sc_graphicfiltersolarize.png" />
+    <Resource Include="Source\Image\sc_greatestheight.png" />
+    <Resource Include="Source\Image\sc_greatestwidth.png" />
+    <Resource Include="Source\Image\sc_griduse.png" />
+    <Resource Include="Source\Image\sc_gridvisible.png" />
+    <Resource Include="Source\Image\sc_group.png" />
+    <Resource Include="Source\Image\sc_groupbox.png" />
+    <Resource Include="Source\Image\sc_groupoutlinemenu.png" />
+    <Resource Include="Source\Image\sc_grow.png" />
+    <Resource Include="Source\Image\sc_halfsphere.png" />
+    <Resource Include="Source\Image\sc_handoutmode.png" />
+    <Resource Include="Source\Image\sc_hangingindent.png" />
+    <Resource Include="Source\Image\sc_heading1parastyle.png" />
+    <Resource Include="Source\Image\sc_heading2parastyle.png" />
+    <Resource Include="Source\Image\sc_heading3parastyle.png" />
+    <Resource Include="Source\Image\sc_heading4parastyle.png" />
+    <Resource Include="Source\Image\sc_heading5parastyle.png" />
+    <Resource Include="Source\Image\sc_heading6parastyle.png" />
+    <Resource Include="Source\Image\sc_helpindex.png" />
+    <Resource Include="Source\Image\sc_helplinesmove.png" />
+    <Resource Include="Source\Image\sc_helplinesuse.png" />
+    <Resource Include="Source\Image\sc_helplinesvisible.png" />
+    <Resource Include="Source\Image\sc_hide.png" />
+    <Resource Include="Source\Image\sc_hideallnotes.png" />
+    <Resource Include="Source\Image\sc_hidecolumn.png" />
+    <Resource Include="Source\Image\sc_hidedetail.png" />
+    <Resource Include="Source\Image\sc_hidenote.png" />
+    <Resource Include="Source\Image\sc_hiderow.png" />
+    <Resource Include="Source\Image\sc_hideslide.png" />
+    <Resource Include="Source\Image\sc_hidewhitespace.png" />
+    <Resource Include="Source\Image\sc_hyphenate.png" />
+    <Resource Include="Source\Image\sc_iconsetformatdialog.png" />
+    <Resource Include="Source\Image\sc_imagebutton.png" />
+    <Resource Include="Source\Image\sc_imagecontrol.png" />
+    <Resource Include="Source\Image\sc_imagemapdialog.png" />
+    <Resource Include="Source\Image\sc_importdialog.png" />
+    <Resource Include="Source\Image\sc_incrementindent.png" />
+    <Resource Include="Source\Image\sc_incrementsublevels.png" />
+    <Resource Include="Source\Image\sc_insertauthoritiesentry.png" />
+    <Resource Include="Source\Image\sc_insertbookmark.png" />
+    <Resource Include="Source\Image\sc_insertbreak.png" />
+    <Resource Include="Source\Image\sc_insertcaptiondialog.png" />
+    <Resource Include="Source\Image\sc_insertcellsdown.png" />
+    <Resource Include="Source\Image\sc_insertcellsright.png" />
+    <Resource Include="Source\Image\sc_insertcolumnbreak.png" />
+    <Resource Include="Source\Image\sc_insertcolumns.png" />
+    <Resource Include="Source\Image\sc_insertcolumnsafter.png" />
+    <Resource Include="Source\Image\sc_insertcolumnsbefore.png" />
+    <Resource Include="Source\Image\sc_insertdraw.png" />
+    <Resource Include="Source\Image\sc_insertendnote.png" />
+    <Resource Include="Source\Image\sc_insertenvelope.png" />
+    <Resource Include="Source\Image\sc_insertexternaldatasource.png" />
+    <Resource Include="Source\Image\sc_insertfieldctrl.png" />
+    <Resource Include="Source\Image\sc_insertfixedtext.png" />
+    <Resource Include="Source\Image\sc_insertfootnote.png" />
+    <Resource Include="Source\Image\sc_insertformhscroll.png" />
+    <Resource Include="Source\Image\sc_insertframe.png" />
+    <Resource Include="Source\Image\sc_insertgraphic.png" />
+    <Resource Include="Source\Image\sc_inserthyperlink.png" />
+    <Resource Include="Source\Image\sc_inserthyperlinkcontrol.png" />
+    <Resource Include="Source\Image\sc_insertindexesentry.png" />
+    <Resource Include="Source\Image\sc_insertlinebreak.png" />
+    <Resource Include="Source\Image\sc_insertmasterpage.png" />
+    <Resource Include="Source\Image\sc_insertmath.png" />
+    <Resource Include="Source\Image\sc_insertmenutitles.png" />
+    <Resource Include="Source\Image\sc_insertmultiindex.png" />
+    <Resource Include="Source\Image\sc_insertneutralparagraph.png" />
+    <Resource Include="Source\Image\sc_insertobject.png" />
+    <Resource Include="Source\Image\sc_insertobjectdialog.png" />
+    <Resource Include="Source\Image\sc_insertpage.png" />
+    <Resource Include="Source\Image\sc_insertpagebreak.png" />
+    <Resource Include="Source\Image\sc_insertpagecountfield.png" />
+    <Resource Include="Source\Image\sc_insertpagenumberfield.png" />
+    <Resource Include="Source\Image\sc_insertplugin.png" />
+    <Resource Include="Source\Image\sc_insertreferencefield.png" />
+    <Resource Include="Source\Image\sc_insertrows.png" />
+    <Resource Include="Source\Image\sc_insertrowsafter.png" />
+    <Resource Include="Source\Image\sc_insertrowsbefore.png" />
+    <Resource Include="Source\Image\sc_insertscript.png" />
+    <Resource Include="Source\Image\sc_insertsection.png" />
+    <Resource Include="Source\Image\sc_insertsound.png" />
+    <Resource Include="Source\Image\sc_insertspreadsheet.png" />
+    <Resource Include="Source\Image\sc_insertsymbol.png" />
+    <Resource Include="Source\Image\sc_inserttable.png" />
+    <Resource Include="Source\Image\sc_inserttitlefield.png" />
+    <Resource Include="Source\Image\sc_inserttopicfield.png" />
+    <Resource Include="Source\Image\sc_inserttreecontrol.png" />
+    <Resource Include="Source\Image\sc_insertvideo.png" />
+    <Resource Include="Source\Image\sc_interactivegradient.png" />
+    <Resource Include="Source\Image\sc_interactivetransparence.png" />
+    <Resource Include="Source\Image\sc_intersect.png" />
+    <Resource Include="Source\Image\sc_italic.png" />
+    <Resource Include="Source\Image\sc_label.png" />
+    <Resource Include="Source\Image\sc_lastrecord.png" />
+    <Resource Include="Source\Image\sc_leavegroup.png" />
+    <Resource Include="Source\Image\sc_legend.png" />
+    <Resource Include="Source\Image\sc_line.png" />
+    <Resource Include="Source\Image\sc_linearrowcircle.png" />
+    <Resource Include="Source\Image\sc_linearrowend.png" />
+    <Resource Include="Source\Image\sc_linearrows.png" />
+    <Resource Include="Source\Image\sc_linearrowsquare.png" />
+    <Resource Include="Source\Image\sc_linearrowstart.png" />
+    <Resource Include="Source\Image\sc_linecirclearrow.png" />
+    <Resource Include="Source\Image\sc_lineendstyle.png" />
+    <Resource Include="Source\Image\sc_linenumberdialog.png" />
+    <Resource Include="Source\Image\sc_linesquarearrow.png" />
+    <Resource Include="Source\Image\sc_linestyle.png" />
+    <Resource Include="Source\Image\sc_linewidth.png" />
+    <Resource Include="Source\Image\sc_line_diagonal.png" />
+    <Resource Include="Source\Image\sc_listbox.png" />
+    <Resource Include="Source\Image\sc_loadbasic.png" />
+    <Resource Include="Source\Image\sc_lock.png" />
+    <Resource Include="Source\Image\sc_macrorecorder.png" />
+    <Resource Include="Source\Image\sc_mailmergecreatedocuments.png" />
+    <Resource Include="Source\Image\sc_mailmergeemaildocuments.png" />
+    <Resource Include="Source\Image\sc_mailmergeexcludeentry.png" />
+    <Resource Include="Source\Image\sc_mailmergeprintdocuments.png" />
+    <Resource Include="Source\Image\sc_mailmergesavedocuments.png" />
+    <Resource Include="Source\Image\sc_mailmergewizard.png" />
+    <Resource Include="Source\Image\sc_managebreakpoints.png" />
+    <Resource Include="Source\Image\sc_managelanguage.png" />
+    <Resource Include="Source\Image\sc_managexmlsource.png" />
+    <Resource Include="Source\Image\sc_marks.png" />
+    <Resource Include="Source\Image\sc_masterlayouts.png" />
+    <Resource Include="Source\Image\sc_masterpage.png" />
+    <Resource Include="Source\Image\sc_matchgroup.png" />
+    <Resource Include="Source\Image\sc_measureline.png" />
+    <Resource Include="Source\Image\sc_mediamute.png" />
+    <Resource Include="Source\Image\sc_mediapause.png" />
+    <Resource Include="Source\Image\sc_mediarepeat.png" />
+    <Resource Include="Source\Image\sc_menubar.png" />
+    <Resource Include="Source\Image\sc_merge.png" />
+    <Resource Include="Source\Image\sc_mergecells.png" />
+    <Resource Include="Source\Image\sc_mergedialog.png" />
+    <Resource Include="Source\Image\sc_mergedocuments.png" />
+    <Resource Include="Source\Image\sc_mirror.png" />
+    <Resource Include="Source\Image\sc_mirrorvert.png" />
+    <Resource Include="Source\Image\sc_modifyframe.png" />
+    <Resource Include="Source\Image\sc_moduledialog.png" />
+    <Resource Include="Source\Image\sc_morecontrols.png" />
+    <Resource Include="Source\Image\sc_morphing.png" />
+    <Resource Include="Source\Image\sc_move.png" />
+    <Resource Include="Source\Image\sc_movedown.png" />
+    <Resource Include="Source\Image\sc_movedownsubitems.png" />
+    <Resource Include="Source\Image\sc_movepagefirst.png" />
+    <Resource Include="Source\Image\sc_movepagelast.png" />
+    <Resource Include="Source\Image\sc_moveup.png" />
+    <Resource Include="Source\Image\sc_moveupsubitems.png" />
+    <Resource Include="Source\Image\sc_name.png" />
+    <Resource Include="Source\Image\sc_navigationbar.png" />
+    <Resource Include="Source\Image\sc_navigator.png" />
+    <Resource Include="Source\Image\sc_neutralcellstyle.png" />
+    <Resource Include="Source\Image\sc_newdoc.png" />
+    <Resource Include="Source\Image\sc_newwindow.png" />
+    <Resource Include="Source\Image\sc_nextannotation.png" />
+    <Resource Include="Source\Image\sc_nextrecord.png" />
+    <Resource Include="Source\Image\sc_normalmultipanegui.png" />
+    <Resource Include="Source\Image\sc_normalviewmode.png" />
+    <Resource Include="Source\Image\sc_notesmasterpage.png" />
+    <Resource Include="Source\Image\sc_notesmode.png" />
+    <Resource Include="Source\Image\sc_numberformatdate.png" />
+    <Resource Include="Source\Image\sc_numberformatdecdecimals.png" />
+    <Resource Include="Source\Image\sc_numberformatdecimal.png" />
+    <Resource Include="Source\Image\sc_numberformatincdecimals.png" />
+    <Resource Include="Source\Image\sc_numberformatpercent.png" />
+    <Resource Include="Source\Image\sc_numberformatscientific.png" />
+    <Resource Include="Source\Image\sc_numberformatstandard.png" />
+    <Resource Include="Source\Image\sc_numberformatthousands.png" />
+    <Resource Include="Source\Image\sc_numberingstart.png" />
+    <Resource Include="Source\Image\sc_numberliststyle.png" />
+    <Resource Include="Source\Image\sc_objectalignleft.png" />
+    <Resource Include="Source\Image\sc_objectalignright.png" />
+    <Resource Include="Source\Image\sc_objectbackone.png" />
+    <Resource Include="Source\Image\sc_objectcatalog.png" />
+    <Resource Include="Source\Image\sc_objectforwardone.png" />
+    <Resource Include="Source\Image\sc_objectposition.png" />
+    <Resource Include="Source\Image\sc_ok.png" />
+    <Resource Include="Source\Image\sc_open.png" />
+    <Resource Include="Source\Image\sc_openreadonly.png" />
+    <Resource Include="Source\Image\sc_openremote.png" />
+    <Resource Include="Source\Image\sc_openxmlfiltersettings.png" />
+    <Resource Include="Source\Image\sc_optimizetable.png" />
+    <Resource Include="Source\Image\sc_orientation.png" />
+    <Resource Include="Source\Image\sc_outlinebullet.png" />
+    <Resource Include="Source\Image\sc_outlinecollapse.png" />
+    <Resource Include="Source\Image\sc_outlinecollapseall.png" />
+    <Resource Include="Source\Image\sc_outlineexpand.png" />
+    <Resource Include="Source\Image\sc_outlineexpandall.png" />
+    <Resource Include="Source\Image\sc_outlinefont.png" />
+    <Resource Include="Source\Image\sc_outlineformat.png" />
+    <Resource Include="Source\Image\sc_outlinemode.png" />
+    <Resource Include="Source\Image\sc_outputqualityblackwhite.png" />
+    <Resource Include="Source\Image\sc_outputqualitygrayscale.png" />
+    <Resource Include="Source\Image\sc_overline.png" />
+    <Resource Include="Source\Image\sc_pagebreakmode.png" />
+    <Resource Include="Source\Image\sc_pagedialog.png" />
+    <Resource Include="Source\Image\sc_pagemargin.png" />
+    <Resource Include="Source\Image\sc_pagemode.png" />
+    <Resource Include="Source\Image\sc_pagesetup.png" />
+    <Resource Include="Source\Image\sc_paragraphdialog.png" />
+    <Resource Include="Source\Image\sc_paralefttoright.png" />
+    <Resource Include="Source\Image\sc_pararighttoleft.png" />
+    <Resource Include="Source\Image\sc_paraspacedecrease.png" />
+    <Resource Include="Source\Image\sc_paraspaceincrease.png" />
+    <Resource Include="Source\Image\sc_paste.png" />
+    <Resource Include="Source\Image\sc_pasteonlyformula.png" />
+    <Resource Include="Source\Image\sc_pasteonlytext.png" />
+    <Resource Include="Source\Image\sc_pasteonlyvalue.png" />
+    <Resource Include="Source\Image\sc_pastespecial.png" />
+    <Resource Include="Source\Image\sc_pasteunformatted.png" />
+    <Resource Include="Source\Image\sc_patternfield.png" />
+    <Resource Include="Source\Image\sc_photoalbumdialog.png" />
+    <Resource Include="Source\Image\sc_pickthrough.png" />
+    <Resource Include="Source\Image\sc_pie.png" />
+    <Resource Include="Source\Image\sc_pie_unfilled.png" />
+    <Resource Include="Source\Image\sc_polygon.png" />
+    <Resource Include="Source\Image\sc_polygon_diagonal.png" />
+    <Resource Include="Source\Image\sc_polygon_diagonal_unfilled.png" />
+    <Resource Include="Source\Image\sc_polygon_unfilled.png" />
+    <Resource Include="Source\Image\sc_position.png" />
+    <Resource Include="Source\Image\sc_preformattedparastyle.png" />
+    <Resource Include="Source\Image\sc_presentation.png" />
+    <Resource Include="Source\Image\sc_presentationcurrentslide.png" />
+    <Resource Include="Source\Image\sc_presentationdialog.png" />
+    <Resource Include="Source\Image\sc_presentationlayout.png" />
+    <Resource Include="Source\Image\sc_presentationminimizer.png" />
+    <Resource Include="Source\Image\sc_previousannotation.png" />
+    <Resource Include="Source\Image\sc_prevrecord.png" />
+    <Resource Include="Source\Image\sc_print.png" />
+    <Resource Include="Source\Image\sc_printdefault.png" />
+    <Resource Include="Source\Image\sc_printersetup.png" />
+    <Resource Include="Source\Image\sc_printpreview.png" />
+    <Resource Include="Source\Image\sc_progressbar.png" />
+    <Resource Include="Source\Image\sc_protect.png" />
+    <Resource Include="Source\Image\sc_pushbutton.png" />
+    <Resource Include="Source\Image\sc_quit.png" />
+    <Resource Include="Source\Image\sc_quotecharstyle.png" />
+    <Resource Include="Source\Image\sc_quoteparastyle.png" />
+    <Resource Include="Source\Image\sc_radiobutton.png" />
+    <Resource Include="Source\Image\sc_recentfilelist.png" />
+    <Resource Include="Source\Image\sc_recsearch.png" />
+    <Resource Include="Source\Image\sc_rect.png" />
+    <Resource Include="Source\Image\sc_rect_rounded.png" />
+    <Resource Include="Source\Image\sc_rect_rounded_unfilled.png" />
+    <Resource Include="Source\Image\sc_rect_unfilled.png" />
+    <Resource Include="Source\Image\sc_redactdoc.png" />
+    <Resource Include="Source\Image\sc_redactedexportblack.png" />
+    <Resource Include="Source\Image\sc_redactedexportwhite.png" />
+    <Resource Include="Source\Image\sc_redo.png" />
+    <Resource Include="Source\Image\sc_rejectalltrackedchanges.png" />
+    <Resource Include="Source\Image\sc_rejecttrackedchange.png" />
+    <Resource Include="Source\Image\sc_reload.png" />
+    <Resource Include="Source\Image\sc_remove.png" />
+    <Resource Include="Source\Image\sc_removebullets.png" />
+    <Resource Include="Source\Image\sc_removefiltersort.png" />
+    <Resource Include="Source\Image\sc_removehyperlink.png" />
+    <Resource Include="Source\Image\sc_renameobject.png" />
+    <Resource Include="Source\Image\sc_renamepage.png" />
+    <Resource Include="Source\Image\sc_renameslide.png" />
+    <Resource Include="Source\Image\sc_renametable.png" />
+    <Resource Include="Source\Image\sc_repeat.png" />
+    <Resource Include="Source\Image\sc_replycomment.png" />
+    <Resource Include="Source\Image\sc_resetattributes.png" />
+    <Resource Include="Source\Image\sc_romanliststyle.png" />
+    <Resource Include="Source\Image\sc_romanlowliststyle.png" />
+    <Resource Include="Source\Image\sc_rotateleft.png" />
+    <Resource Include="Source\Image\sc_rotateright.png" />
+    <Resource Include="Source\Image\sc_ruler.png" />
+    <Resource Include="Source\Image\sc_runbasic.png" />
+    <Resource Include="Source\Image\sc_runmacro.png" />
+    <Resource Include="Source\Image\sc_save.png" />
+    <Resource Include="Source\Image\sc_saveas.png" />
+    <Resource Include="Source\Image\sc_saveasremote.png" />
+    <Resource Include="Source\Image\sc_saveastemplate.png" />
+    <Resource Include="Source\Image\sc_savebackground.png" />
+    <Resource Include="Source\Image\sc_sbaexecutesql.png" />
+    <Resource Include="Source\Image\sc_sbanativesql.png" />
+    <Resource Include="Source\Image\sc_scaletext.png" />
+    <Resource Include="Source\Image\sc_scriptorganizer.png" />
+    <Resource Include="Source\Image\sc_scrollbar.png" />
+    <Resource Include="Source\Image\sc_searchdialog.png" />
+    <Resource Include="Source\Image\sc_sectionshrink.png" />
+    <Resource Include="Source\Image\sc_sectionshrinkbottom.png" />
+    <Resource Include="Source\Image\sc_sectionshrinktop.png" />
+    <Resource Include="Source\Image\sc_selectall.png" />
+    <Resource Include="Source\Image\sc_selectbackground.png" />
+    <Resource Include="Source\Image\sc_selectcolumn.png" />
+    <Resource Include="Source\Image\sc_selectdata.png" />
+    <Resource Include="Source\Image\sc_selectdb.png" />
+    <Resource Include="Source\Image\sc_selectobject.png" />
+    <Resource Include="Source\Image\sc_selectrow.png" />
+    <Resource Include="Source\Image\sc_selecttable.png" />
+    <Resource Include="Source\Image\sc_sendfeedback.png" />
+    <Resource Include="Source\Image\sc_sendmail.png" />
+    <Resource Include="Source\Image\sc_sendtoback.png" />
+    <Resource Include="Source\Image\sc_setdocumentproperties.png" />
+    <Resource Include="Source\Image\sc_setminimalcolumnwidth.png" />
+    <Resource Include="Source\Image\sc_setminimalrowheight.png" />
+    <Resource Include="Source\Image\sc_setoptimalcolumnwidth.png" />
+    <Resource Include="Source\Image\sc_setoptimalrowheight.png" />
+    <Resource Include="Source\Image\sc_setoutline.png" />
+    <Resource Include="Source\Image\sc_shadowcursor.png" />
+    <Resource Include="Source\Image\sc_shadowed.png" />
+    <Resource Include="Source\Image\sc_sharedocument.png" />
+    <Resource Include="Source\Image\sc_shear.png" />
+    <Resource Include="Source\Image\sc_shell3d.png" />
+    <Resource Include="Source\Image\sc_showannotations.png" />
+    <Resource Include="Source\Image\sc_showbookview.png" />
+    <Resource Include="Source\Image\sc_showcolumn.png" />
+    <Resource Include="Source\Image\sc_showdatanavigator.png" />
+    <Resource Include="Source\Image\sc_showdependents.png" />
+    <Resource Include="Source\Image\sc_showdetail.png" />
+    <Resource Include="Source\Image\sc_showerrors.png" />
+    <Resource Include="Source\Image\sc_showfmexplorer.png" />
+    <Resource Include="Source\Image\sc_showinvalid.png" />
+    <Resource Include="Source\Image\sc_showmultiplepages.png" />
+    <Resource Include="Source\Image\sc_shownote.png" />
+    <Resource Include="Source\Image\sc_showprecedents.png" />
+    <Resource Include="Source\Image\sc_showrow.png" />
+    <Resource Include="Source\Image\sc_showsinglepage.png" />
+    <Resource Include="Source\Image\sc_showslide.png" />
+    <Resource Include="Source\Image\sc_showtwopages.png" />
+    <Resource Include="Source\Image\sc_shrink.png" />
+    <Resource Include="Source\Image\sc_sidebar.png" />
+    <Resource Include="Source\Image\sc_signature.png" />
+    <Resource Include="Source\Image\sc_signaturelinedialog.png" />
+    <Resource Include="Source\Image\sc_signpdf.png" />
+    <Resource Include="Source\Image\sc_size.png" />
+    <Resource Include="Source\Image\sc_slidemasterpage.png" />
+    <Resource Include="Source\Image\sc_smallcaps.png" />
+    <Resource Include="Source\Image\sc_smallestheight.png" />
+    <Resource Include="Source\Image\sc_smallestwidth.png" />
+    <Resource Include="Source\Image\sc_snapborder.png" />
+    <Resource Include="Source\Image\sc_snapframe.png" />
+    <Resource Include="Source\Image\sc_snappoints.png" />
+    <Resource Include="Source\Image\sc_solverdialog.png" />
+    <Resource Include="Source\Image\sc_sortascending.png" />
+    <Resource Include="Source\Image\sc_sortdescending.png" />
+    <Resource Include="Source\Image\sc_sourcecharstyle.png" />
+    <Resource Include="Source\Image\sc_spacepara1.png" />
+    <Resource Include="Source\Image\sc_spacepara15.png" />
+    <Resource Include="Source\Image\sc_spacepara2.png" />
+    <Resource Include="Source\Image\sc_spacing.png" />
+    <Resource Include="Source\Image\sc_spelling.png" />
+    <Resource Include="Source\Image\sc_spellonline.png" />
+    <Resource Include="Source\Image\sc_sphere.png" />
+    <Resource Include="Source\Image\sc_spinbutton.png" />
+    <Resource Include="Source\Image\sc_splitcell.png" />
+    <Resource Include="Source\Image\sc_splittable.png" />
+    <Resource Include="Source\Image\sc_splitwindow.png" />
+    <Resource Include="Source\Image\sc_square.png" />
+    <Resource Include="Source\Image\sc_square_rounded.png" />
+    <Resource Include="Source\Image\sc_square_rounded_unfilled.png" />
+    <Resource Include="Source\Image\sc_square_unfilled.png" />
+    <Resource Include="Source\Image\sc_starshapes.bang.png" />
+    <Resource Include="Source\Image\sc_starshapes.concave-star6.png" />
+    <Resource Include="Source\Image\sc_starshapes.doorplate.png" />
+    <Resource Include="Source\Image\sc_starshapes.horizontal-scroll.png" />
+    <Resource Include="Source\Image\sc_starshapes.png" />
+    <Resource Include="Source\Image\sc_starshapes.signet.png" />
+    <Resource Include="Source\Image\sc_starshapes.star12.png" />
+    <Resource Include="Source\Image\sc_starshapes.star24.png" />
+    <Resource Include="Source\Image\sc_starshapes.star4.png" />
+    <Resource Include="Source\Image\sc_starshapes.star5.png" />
+    <Resource Include="Source\Image\sc_starshapes.star6.png" />
+    <Resource Include="Source\Image\sc_starshapes.star8.png" />
+    <Resource Include="Source\Image\sc_starshapes.vertical-scroll.png" />
+    <Resource Include="Source\Image\sc_statisticsmenu.png" />
+    <Resource Include="Source\Image\sc_strikeout.png" />
+    <Resource Include="Source\Image\sc_strongemphasischarstyle.png" />
+    <Resource Include="Source\Image\sc_stylenewbyexample.png" />
+    <Resource Include="Source\Image\sc_subscript.png" />
+    <Resource Include="Source\Image\sc_substract.png" />
+    <Resource Include="Source\Image\sc_subtitleparastyle.png" />
+    <Resource Include="Source\Image\sc_superscript.png" />
+    <Resource Include="Source\Image\sc_switchcontroldesignmode.png" />
+    <Resource Include="Source\Image\sc_switchxformsdesignmode.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.brace-pair.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.bracket-pair.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.cloud.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.diamond-bevel.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.flower.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.forbidden.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.heart.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.left-brace.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.left-bracket.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.lightning.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.moon.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.octagon-bevel.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.puzzle.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.quad-bevel.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.right-brace.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.right-bracket.png" />
+    <Resource Include="Source\Image\sc_symbolshapes.sun.png" />
+    <Resource Include="Source\Image\sc_tabdialog.png" />
+    <Resource Include="Source\Image\sc_tabledesign.png" />
+    <Resource Include="Source\Image\sc_tabledialog.png" />
+    <Resource Include="Source\Image\sc_tablemodefix.png" />
+    <Resource Include="Source\Image\sc_tablemodefixprop.png" />
+    <Resource Include="Source\Image\sc_tablemodevariable.png" />
+    <Resource Include="Source\Image\sc_tablenumberformatdialog.png" />
+    <Resource Include="Source\Image\sc_testmode.png" />
+    <Resource Include="Source\Image\sc_text.png" />
+    <Resource Include="Source\Image\sc_textbodyparastyle.png" />
+    <Resource Include="Source\Image\sc_textdirectionlefttoright.png" />
+    <Resource Include="Source\Image\sc_textdirectiontoptobottom.png" />
+    <Resource Include="Source\Image\sc_texttocolumns.png" />
+    <Resource Include="Source\Image\sc_text_marquee.png" />
+    <Resource Include="Source\Image\sc_thesaurus.png" />
+    <Resource Include="Source\Image\sc_thesaurusdialog.png" />
+    <Resource Include="Source\Image\sc_timefield.png" />
+    <Resource Include="Source\Image\sc_titlepagedialog.png" />
+    <Resource Include="Source\Image\sc_titleparastyle.png" />
+    <Resource Include="Source\Image\sc_toggleanchortype.png" />
+    <Resource Include="Source\Image\sc_toggleaxistitle.png" />
+    <Resource Include="Source\Image\sc_togglebreakpoint.png" />
+    <Resource Include="Source\Image\sc_toggleformula.png" />
+    <Resource Include="Source\Image\sc_togglegridhorizontal.png" />
+    <Resource Include="Source\Image\sc_togglegridvertical.png" />
+    <Resource Include="Source\Image\sc_togglelegend.png" />
+    <Resource Include="Source\Image\sc_togglemergecells.png" />
+    <Resource Include="Source\Image\sc_toggleobjectbeziermode.png" />
+    <Resource Include="Source\Image\sc_toggleobjectrotatemode.png" />
+    <Resource Include="Source\Image\sc_togglesheetgrid.png" />
+    <Resource Include="Source\Image\sc_toggletabbarvisibility.png" />
+    <Resource Include="Source\Image\sc_toggletitle.png" />
+    <Resource Include="Source\Image\sc_toolbarmode.png" />
+    <Resource Include="Source\Image\sc_torus.png" />
+    <Resource Include="Source\Image\sc_trackchanges.png" />
+    <Resource Include="Source\Image\sc_trackchangesbar.png" />
+    <Resource Include="Source\Image\sc_transformdialog.png" />
+    <Resource Include="Source\Image\sc_underline.png" />
+    <Resource Include="Source\Image\sc_underlinedouble.png" />
+    <Resource Include="Source\Image\sc_undo.png" />
+    <Resource Include="Source\Image\sc_ungroup.png" />
+    <Resource Include="Source\Image\sc_unhainframes.png" />
+    <Resource Include="Source\Image\sc_unsetcellsreadonly.png" />
+    <Resource Include="Source\Image\sc_upsearch.png" />
+    <Resource Include="Source\Image\sc_validation.png" />
+    <Resource Include="Source\Image\sc_versiondialog.png" />
+    <Resource Include="Source\Image\sc_verticalcaption.png" />
+    <Resource Include="Source\Image\sc_verticaltext.png" />
+    <Resource Include="Source\Image\sc_verticaltextfittosizetool.png" />
+    <Resource Include="Source\Image\sc_vfixedline.png" />
+    <Resource Include="Source\Image\sc_view100.png" />
+    <Resource Include="Source\Image\sc_viewdatasourcebrowser.png" />
+    <Resource Include="Source\Image\sc_viewformasgrid.png" />
+    <Resource Include="Source\Image\sc_viewrowcolumnheaders.png" />
+    <Resource Include="Source\Image\sc_viewvaluehighlighting.png" />
+    <Resource Include="Source\Image\sc_warningcellstyles.png" />
+    <Resource Include="Source\Image\sc_watermark.png" />
+    <Resource Include="Source\Image\sc_window3d.png" />
+    <Resource Include="Source\Image\sc_wordcountdialog.png" />
+    <Resource Include="Source\Image\sc_wrapcontour.png" />
+    <Resource Include="Source\Image\sc_wrapideal.png" />
+    <Resource Include="Source\Image\sc_wrapleft.png" />
+    <Resource Include="Source\Image\sc_wrapmenu.png" />
+    <Resource Include="Source\Image\sc_wrapoff.png" />
+    <Resource Include="Source\Image\sc_wrapon.png" />
+    <Resource Include="Source\Image\sc_wrapright.png" />
+    <Resource Include="Source\Image\sc_wraptext.png" />
+    <Resource Include="Source\Image\sc_wrapthrough.png" />
+    <Resource Include="Source\Image\sc_xlinecolor.png" />
+    <Resource Include="Source\Image\sc_zoomin.png" />
+    <Resource Include="Source\Image\sc_zoomnext.png" />
+    <Resource Include="Source\Image\sc_zoomobjects.png" />
+    <Resource Include="Source\Image\sc_zoomoptimal.png" />
+    <Resource Include="Source\Image\sc_zoomout.png" />
+    <Resource Include="Source\Image\sc_zoompage.png" />
+    <Resource Include="Source\Image\sc_zoompagewidth.png" />
+    <Resource Include="Source\Image\sc_zoompanning.png" />
+    <Resource Include="Source\Image\sc_zoomprevious.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\input.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\run_exc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Control\CustomControl\" />
+    <Folder Include="Control\Style\" />
+    <Folder Include="Control\UserControl\" />
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Image\jupyter.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />
+</Project>
